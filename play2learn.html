@@ -1,0 +1,673 @@
+</search>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Global Play2Learn Academy by Dr. Etain Kiely - Integrating computational mathematics with game-based learning across cultures. Explore our initiatives, resources, and global partnerships.">
+    <title>Dr. Etain Kiely | Global Play2Learn</title>
+    <link rel="stylesheet" href="assets/css/play2learn.css">
+    <!-- Add favicon here once available -->
+    <!-- <link rel="icon" href="assets/images/favicon.ico"> -->
+    
+    <style>
+    .task-checkbox:checked::after {
+        content: "✓";
+        position: absolute;
+        color: white;
+        font-size: 1rem;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .task-content {
+        flex: 1;
+    }
+    
+    .task-content h4 {
+        margin-bottom: 0.5rem;
+    }
+    
+    .checklist-item.completed .task-content {
+        text-decoration: line-through;
+        opacity: 0.7;
+    }
+    
+    /* Progress Visualization */
+    .progress-container {
+        margin: 2rem 0;
+    }
+    
+    .progress-bar {
+        height: 25px;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 12.5px;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(to right, var(--accent-gold), #FFD700);
+        width: 0;
+        transition: width 1s ease;
+        position: relative;
+    }
+    
+    .progress-label {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--deep-green);
+        font-weight: bold;
+        z-index: 10;
+        text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+    }
+    
+    /* Milestone Achievements */
+    .milestone-container {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+    
+    .milestone-grid {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 1rem 2rem;
+        align-items: center;
+    }
+    
+    .milestone-icon {
+        font-size: 1.5rem;
+        color: var(--accent-gold);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    
+    .milestone-content {
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .milestone-content:last-child {
+        border-bottom: none;
+    }
+    
+    .milestone-title {
+        font-weight: bold;
+        color: var(--accent-gold);
+        margin-bottom: 0.25rem;
+    }
+    
+    .milestone-detail {
+        color: var(--light-gold);
+        font-size: 0.9rem;
+    }
+    
+    /* Cooperative Challenges */
+    .cooperative-challenge {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin: 2rem 0;
+        border-left: 4px solid var(--accent-gold);
+    }
+    
+    .challenge-team {
+        display: flex;
+        gap: 1rem;
+        margin: 1.5rem 0;
+        flex-wrap: wrap;
+    }
+    
+    .team-member {
+        background-color: white;
+        border-radius: 8px;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 120px;
+    }
+    
+    .member-avatar {
+        width: 60px;
+        height: 60px;
+        background-color: var(--accent-gold);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .member-name {
+        font-weight: bold;
+        color: var(--deep-green);
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    
+    /* Animations */
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+    
+    .pulse-animation {
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes glow {
+        0% { box-shadow: 0 0 5px rgba(214, 196, 138, 0.5); }
+        50% { box-shadow: 0 0 20px rgba(214, 196, 138, 0.8); }
+        100% { box-shadow: 0 0 5px rgba(214, 196, 138, 0.5); }
+    }
+    
+    .glow-animation {
+        animation: glow 2s infinite;
+    }
+    
+    /* Responsive Adjustments */
+    /* ===== Layout Styles ===== */
+    .highlight-container {
+        margin-bottom: 2rem;
+    }
+
+    /* Partnership Map Styles */
+    .partnership-map {
+        background-color: var(--light-gold);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        position: relative;
+        min-height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+    
+    .partnership-description {
+        display: none;
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: white;
+        border: 1px solid var(--deep-green);
+        border-radius: 5px;
+        padding: 1rem;
+        width: 250px;
+        z-index: 100;
+        box-shadow: 0 4px 12px var(--green-shadow);
+    }
+    
+    .partner-country {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        min-width: 150px;
+        transition: all 0.3s ease;
+    }
+    
+    .partner-country:hover, 
+    .partner-country:focus {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px var(--green-shadow);
+        outline: none;
+    }
+    
+    .partner-country:hover .partnership-description,
+    .partner-country:focus-within .partnership-description {
+        display: block;
+    }
+    
+    .country-flag {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .country-name {
+        font-weight: bold;
+        color: var(--deep-green);
+        margin-bottom: 0.25rem;
+    }
+    
+    .country-focus {
+        font-size: 0.9rem;
+        color: var(--text-dark);
+        text-align: center;
+    }
+    
+    .notice {
+        font-style: italic;
+        color: var(--deep-green);
+        background-color: rgba(214, 196, 138, 0.2);
+        padding: 0.5rem;
+        border-radius: 4px;
+        margin-top: 0.5rem;
+    }
+    
+    .partner-contact {
+        font-size: 0.85rem;
+        margin-top: 0.5rem;
+        border-top: 1px solid #eee;
+        padding-top: 0.5rem;
+    }
+    
+    .partner-outcome {
+        font-style: italic;
+        font-size: 0.85rem;
+        color: var(--header-green);
+    }
+
+    /* ===== Media Queries ===== */
+    @media (max-width: 768px) {
+        .hero {
+            padding: 1rem 0;
+        }
+        
+        .hero-image {
+            max-height: 300px;
+        }
+        
+        .hero .content-bg {
+            padding: 1rem;
+        }
+        
+        .mission-map,
+        .superpower-cards {
+            grid-template-columns: 1fr;
+        }
+        
+        .partnership-map {
+            padding: 1rem;
+        }
+        
+        .partner-country {
+            min-width: 120px;
+        }
+    }
+    
+    /* Resource Card Styles */
+    .resource-card {
+        background-color: var(--light-gold);
+        border-radius: 5px;
+        padding: 1.25rem;
+        transition: all 0.3s ease;
+        border-left: 4px solid var(--deep-green);
+        margin-bottom: 1rem;
+    }
+    
+    .resource-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px var(--green-shadow);
+    }
+    
+    .resource-card:focus-within {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px var(--green-shadow);
+        outline: 2px solid var(--accent-gold);
+    }
+    
+    .resource-card h4 {
+        color: var(--header-green);
+        margin-bottom: 0.75rem;
+    }
+    
+    /* Resource links */
+    .download-link {
+        display: inline-flex;
+        align-items: center;
+        margin-top: 0.75rem;
+        font-weight: 600;
+    }
+    
+    .download-link:before {
+        content: "📥";
+        margin-right: 0.5rem;
+    }
+    
+    /* Focus styles for accessibility */
+    a:focus,
+    button:focus,
+    .task-checkbox:focus {
+        outline: 2px solid var(--accent-gold);
+        outline-offset: 2px;
+    }
+    
+    /* Skip to content for accessibility */
+    .skip-to-content {
+        position: absolute;
+        left: -9999px;
+        top: auto;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+    }
+    
+    .skip-to-content:focus {
+        left: 0;
+        top: 0;
+        width: auto;
+        height: auto;
+        padding: 0.5rem 1rem;
+        background: var(--deep-green);
+        color: white;
+        color: white;
+        z-index: 1000;
+    }
+    </style>
+</head>
+
+<body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <header>
+        <div class="container header-content">
+            <h1 class="site-title"><a href="index.html">Dr. Etain Kiely</a></h1>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <nav>
+                <ul class="nav-list" id="navList">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="research.html" class="nav-link">Research</a></li>
+                    <li class="nav-item"><a href="teaching.html" class="nav-link">Teaching</a></li>
+                    <li class="nav-item"><a href="play2learn.html" class="nav-link active">Play2Learn</a></li>
+                    <li class="nav-item"><a href="engaged-research.html" class="nav-link">Engaged Research</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <img src="assets/images/globalplay2learnheader.png" alt="Global Play2Learn Initiative" class="hero-image">
+                <div class="content-bg">
+                    <h2>Global Play2Learn</h2>
+                    <p>Our PLAY framework cultivates collaboration, knowledge transfer, real-world application, and active engagement within global learning communities. By making learning fun and engaging through gamification, we unlock creativity and critical thinking skills while driving sustainability through education.</p>
+                    <div class="hero-buttons">
+                        <a href="#initiatives" class="btn">Explore Initiatives</a>
+                        <a href="#impact" class="btn">View Impact</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Initiatives Section -->
+            <section id="initiatives">
+                <h2 class="section-title" style="margin-top: 1rem;">Key Initiatives</h2>
+                <div class="highlight-container">
+                    <div class="highlight">
+                        <span class="highlight-icon">🌍</span>
+                        <h3>Global Agri-PLAY with BUAN</h3>
+                        <p>A collaborative project with Botswana University of Agriculture and Natural Resources (BUAN) that blends agricultural science with mathematical modeling through game-based learning approaches.</p>
+                        <p>Students engage with real-world agricultural challenges using mathematical tools, developing sustainable solutions that address local farming challenges.</p>
+                    </div>
+                    
+                    <div class="highlight">
+                        <img src="assets/images/actionfraction.png" alt="Fraction Action Learning Initiative" class="section-image">
+                        <h3>Fraction Action & Superpower Learning</h3>
+                        <p>Fractions become superpowers in this high-energy learning initiative. Students develop mathematical fluency while engaging in gamified challenges that make abstract concepts tangible and fun.</p>
+                        <p>This initiative transforms the traditionally challenging topic of fractions into an exciting adventure through storytelling and character-based learning.</p>
+                    </div>
+                    
+                    <div class="highlight">
+                        <span class="highlight-icon">🧩</span>
+                        <h3>Playground Science & Maths in Motion</h3>
+                        <p>Transforming ordinary playgrounds into living mathematics laboratories where children discover physical principles through play.</p>
+                        <p>This initiative connects kinesthetic learning with mathematical concepts, helping students experience abstract ideas through physical movement and play.</p>
+                    </div>
+                </div>
+                
+                <div class="highlight-container">
+                    <div class="highlight">
+                        <span class="highlight-icon">🎮</span>
+                        <h3>ATU Metaverse Minecraft Project</h3>
+                        <p>Utilizing the popular Minecraft platform to create immersive mathematical learning environments where students solve problems in virtual spaces.</p>
+                        <p>This project bridges digital literacy with mathematical problem-solving, creating engaging learning experiences that resonate with digital natives.</p>
+                    </div>
+                    
+                    <div class="highlight">
+                        <span class="highlight-icon">💻</span>
+                        <h3>Code Meets Context: STEM Labs</h3>
+                        <p>A series of coding-based workshops that integrate mathematical principles with computer science, inspired by natural patterns and real-world applications.</p>
+                        <p>These workshops provide free resources like code notebooks inspired by natural patterns and Leaving Cert Computer Science materials.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Impact Metrics Section -->
+            <section id="impact">
+                <h2 class="section-title">Impact Metrics</h2>
+                <div class="content-bg">
+                    <h3>Global Partnerships</h3>
+                    <p>Play2Learn has established meaningful educational partnerships across multiple countries including:</p>
+                    <ul>
+                        <li><strong>Ukraine:</strong> Supporting mathematical education in conflict-affected areas</li>
+                        <li><strong>Botswana:</strong> Agricultural mathematics education and sustainability</li>
+                        <li><strong>Malaysia:</strong> Computational thinking and mathematics integration</li>
+                        <li><strong>Nigeria:</strong> Game-based learning for large classroom environments</li>
+                        <li><strong>Ireland:</strong> Cross-cultural mathematics education partnerships</li>
+                    </ul>
+                    <p>These partnerships have created a global learning community that shares resources, methodologies, and outcomes, enhancing mathematical education worldwide.</p>
+                    
+                    <div class="partnership-map">
+                        <div class="partner-country" tabindex="0" aria-label="Partnership details for Ukraine">
+                            <span class="country-flag" aria-hidden="true">🇺🇦</span>
+                            <span class="country-name">Ukraine</span>
+                            <span class="country-focus">Mathematical education in conflict-affected areas</span>
+                            <div class="partnership-description">
+                                <p>Digital learning resources supporting mathematics education in conflict zones, with a focus on accessible offline learning.</p>
+                                <p class="partner-outcome">Outcome: 5 schools equipped with Play2Learn curriculum materials</p>
+                                <p class="partner-contact">Contact: Prof. Mykola Zhurovskyi, Kyiv Polytechnic Institute</p>
+                            </div>
+                        </div>
+                        <div class="partner-country" tabindex="0" aria-label="Partnership details for Botswana">
+                            <span class="country-flag" aria-hidden="true">🇧🇼</span>
+                            <span class="country-name">Botswana</span>
+                            <span class="country-focus">Agricultural mathematics education</span>
+                            <div class="partnership-description">
+                                <p>Collaborative initiative with BUAN integrating mathematical modeling with sustainable farming practices through gamification.</p>
+                                <p class="partner-outcome">Outcome: 12 agricultural mathematics modules developed and implemented</p>
+                                <p class="partner-contact">Contact: Dr. Thuto Baitseng, BUAN</p>
+                            </div>
+                        </div>
+                        <div class="partner-country" tabindex="0" aria-label="Partnership details for Malaysia">
+                            <span class="country-flag" aria-hidden="true">🇲🇾</span>
+                            <span class="country-name">Malaysia</span>
+                            <span class="country-focus">Computational thinking integration</span>
+                            <div class="partnership-description">
+                                <p>Partnership focusing on integrating computational thinking into mathematics curriculum through culturally-relevant problem solving.</p>
+                                <p class="partner-outcome">Outcome: 4 teacher training workshops conducted with 85 participants</p>
+                                <p class="partner-contact">Contact: Dr. Mei Ling Tan, Universiti Sains Malaysia</p>
+                            </div>
+                        </div>
+                        <div class="partner-country" tabindex="0" aria-label="Partnership details for Nigeria">
+                            <span class="country-flag" aria-hidden="true">🇳🇬</span>
+                            <span class="country-name">Nigeria</span>
+                            <span class="country-focus">Game-based learning for large classrooms</span>
+                            <div class="partnership-description">
+                                <p>Developing scalable game-based learning approaches for mathematics education in large classroom environments.</p>
+                                <p class="partner-outcome">Outcome: 8 schools implementing Play2Learn methods, reaching 1,200+ students</p>
+                                <p class="partner-contact">Contact: Dr. Oluwaseun Adeleke, University of Lagos</p>
+                            </div>
+                        </div>
+                        <div class="partner-country" tabindex="0" aria-label="Partnership details for Ireland">
+                            <span class="country-flag" aria-hidden="true">🇮🇪</span>
+                            <span class="country-name">Ireland</span>
+                            <span class="country-focus">Cross-cultural education partnerships</span>
+                            <div class="partnership-description">
+                                <p>ATU-based initiatives coordinating global Play2Learn activities and developing new teaching methodologies.</p>
+                                <p class="partner-outcome">Outcome: Establishment of Global Play2Learn Academy, coordinating all international initiatives</p>
+                                <p class="partner-contact">Contact: Dr. Etain Kiely, Atlantic Technological University</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight-container">
+                    <div class="highlight">
+                        <h3>Student Engagement Statistics</h3>
+                        <ul>
+                            <li>3,500+ students engaged through global PLAY initiatives</li>
+                            <li>92% increase in student participation in mathematical activities</li>
+                            <li>84% of students report increased confidence in mathematics</li>
+                            <li>95% of educators report improved classroom engagement</li>
+                            <li>Student rating average: 4.8/5 (3-year mean)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="highlight">
+                        <h3>Project Outcomes</h3>
+                        <ul>
+                            <li>Development of 15+ freely available educational game resources</li>
+                            <li>Creation of cross-cultural mathematics curriculum resources</li>
+                            <li>Publication of research findings in educational journals</li>
+                            <li>Implementation of Play2Learn methodologies in 40+ schools globally</li>
+                            <li>Training of over 300 educators in game-based mathematics teaching</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="testimonial">
+                    <blockquote>
+                        "The Play2Learn approach has transformed how our students engage with mathematics. Abstract concepts that once caused anxiety are now approached with curiosity and excitement. The game-based learning methodology has been particularly effective in our diverse classrooms."
+                        <footer>— Dr. Chinedu Okonkwo, Educational Director, Lagos STEM Academy</footer>
+                    </blockquote>
+                </div>
+                
+                <div class="testimonial">
+                    <blockquote>
+                        "Working with the Global Play2Learn Academy has opened new possibilities for our agricultural science students. The integration of mathematical modeling through game-based learning has made complex concepts accessible and relevant to our local farming challenges."
+                        <footer>— Dr. Thuto Baitseng, Botswana University of Agriculture and Natural Resources</footer>
+                    </blockquote>
+                </div>
+            </section>
+            
+            <!-- Learning Resources Section -->
+            <section id="resources">
+                <h2 class="section-title">Learning Resources</h2>
+                <p>Access our library of free educational resources designed to make mathematics engaging and accessible through game-based learning approaches:</p>
+                
+                <div class="highlight-container">
+                    <div class="highlight">
+                        <h3>Code Notebooks</h3>
+                        <p>Interactive code notebooks inspired by natural patterns that explore mathematical concepts through computational thinking:</p>
+                        <div class="resource-card">
+                            <h4>Fibonacci Sequence in Nature</h4>
+                            <p>Explore how the Fibonacci sequence appears in natural patterns and how to model it computationally.</p>
+                            <a href="https://colab.research.google.com/drive/1LO8Nn9olBi_NRE6WUDC54TUL4xrDOJnF" class="download-link">Open in Google Colab</a>
+                        </div>
+                        <div class="resource-card">
+                            <h4>Fractal Mathematics</h4>
+                            <p>Learn about fractal geometry and create beautiful mathematical art through recursive algorithms.</p>
+                            <a href="https://colab.research.google.com/drive/1ZCTgypBzsgQ3mz4GUTzZuDY2LU2p0yKn" class="download-link">Open in Google Colab</a>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight">
+                        <h3>Leaving Cert Materials</h3>
+                        <p>Resources aligned with the Leaving Certificate Computer Science curriculum:</p>
+                        <div class="resource-card">
+                            <h4>Algorithmic Thinking</h4>
+                            <p>A game-based approach to understanding and developing algorithms for solving mathematical problems.</p>
+                            <a href="https://drive.google.com/file/d/1s7WQk5D9JkuyyG2LpnSz3Z2FVx9tKnR2/view" class="download-link">Download PDF Resource</a>
+                        </div>
+                        <div class="resource-card">
+                            <h4>Data Analysis with Python</h4>
+                            <p>Learn how to analyze and visualize data using Python through interactive challenges.</p>
+                            <a href="https://github.com/etain-kiely/lccs-resources/blob/main/DataAnalysis_Python_Tutorial.ipynb" class="download-link">View on GitHub</a>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight">
+                        <h3>Game-Based Learning</h3>
+                        <p>Ready-to-use games and activities for classroom implementation:</p>
+                        <div class="resource-card">
+                            <h4>MathCraft Challenge Cards</h4>
+                            <p>Printable challenge cards that bring mathematical concepts into the Minecraft world.</p>
+                            <p class="notice">(Resource coming soon - Email etain.kiely@atu.ie for early access)</p>
+                        </div>
+                        <div class="resource-card">
+                            <h4>Fraction Action Game Guide</h4>
+                            <p>A complete teacher's guide to implementing the Fraction Action game in your classroom.</p>
+                            <p class="notice">(Updated guide being prepared - Previous versions available upon request)</p>
+                            <a href="mailto:etain.kiely@atu.ie?subject=Request%20for%20Fraction%20Action%20Game%20Guide" class="download-link">Request via Email</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Get Involved Section -->
+            <section>
+                <h2 class="section-title">Get Involved</h2>
+                <p>The Global Play2Learn Academy offers various free resources including code notebooks inspired by natural patterns and Leaving Cert Computer Science materials. We welcome new collaborations and partnerships with educators and institutions worldwide.</p>
+                <p>Whether you're an educator looking to implement game-based learning in your classroom, a researcher interested in collaboration, or an institution seeking to establish a partnership, we'd love to hear from you.</p>
+                <a href="mailto:etain.kiely@atu.ie" class="btn">Contact Us</a>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/etain-kiely/" class="social-link">LinkedIn</a>
+                <a href="https://www.researchgate.net/profile/Etain-Kiely" class="social-link">ResearchGate</a>
+                <a href="https://atu.ie/etain-kiely" class="social-link">ATU Profile</a>
+            </div>
+            <p class="copyright">&copy; <script>document.write(new Date().getFullYear())</script> Dr. Etain Kiely. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for mobile menu toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navList = document.getElementById('navList');
+            
+            menuToggle.addEventListener('click', function() {
+                navList.classList.toggle('nav-active');
+            });
+        });
+    </script>
+</body>
+</html>

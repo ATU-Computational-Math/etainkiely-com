@@ -1,0 +1,107 @@
+name: Test Website
+
+on:
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Run Deployment Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci || npm install
+      
+      - name: Validate HTML
+        uses: Cyb3r-Jak3/html5validator-action@v7.2.0
+        with:
+          root: .
+          format: text
+          log_level: INFO
+      
+      - name: Check for broken links
+        uses: lycheeverse/lychee-action@v1.8.0
+        with:
+          args: --verbose --no-progress './**/*.html'
+          fail: true
+        continue-on-error: true
+      
+      - name: Start test server
+        run: |
+          npx http-server . -p 8080 &
+          echo "Waiting for server to start..."
+          sleep 5
+      
+      - name: Run deployment tests
+        run: node scripts/deployment-tester.js http://localhost:8080
+      
+      - name: Create test summary
+        if: always()
+        run: |
+          echo "## Test Results" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f deployment-test-report.json ]; then
+            echo "### Deployment Test Report" >> $GITHUB_STEP_SUMMARY
+            echo "```json" >> $GITHUB_STEP_SUMMARY
+            cat deployment-test-report.json | jq '.summary' >> $GITHUB_STEP_SUMMARY
+            echo "```" >> $GITHUB_STEP_SUMMARY
+            
+            FAILED=$(cat deployment-test-report.json | jq '.summary.failed')
+            WARNINGS=$(cat deployment-test-report.json | jq '.summary.warnings')
+            
+            if [ "$FAILED" -gt 0 ]; then
+              echo "### Failed Tests" >> $GITHUB_STEP_SUMMARY
+              echo "```" >> $GITHUB_STEP_SUMMARY
+              cat deployment-test-report.json | jq '.details[] | select(.type=="failure") | .message' >> $GITHUB_STEP_SUMMARY
+              echo "```" >> $GITHUB_STEP_SUMMARY
+            fi
+            
+            if [ "$WARNINGS" -gt 0 ]; then
+              echo "### Warnings" >> $GITHUB_STEP_SUMMARY
+              echo "```" >> $GITHUB_STEP_SUMMARY
+              cat deployment-test-report.json | jq '.details[] | select(.type=="warning") | .message' >> $GITHUB_STEP_SUMMARY
+              echo "```" >> $GITHUB_STEP_SUMMARY
+            fi
+          else
+            echo "❌ No test report was generated!" >> $GITHUB_STEP_SUMMARY
+          fi
+      
+      - name: Upload test artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-reports
+          path: |
+            deployment-test-report.json
+            html5validator-log.json
+            lychee.log
+          retention-days: 14
+      
+      - name: Verify test status
+        if: always()
+        run: |
+          if [ -f deployment-test-report.json ]; then
+            FAILED=$(cat deployment-test-report.json | jq '.summary.failed')
+            if [ "$FAILED" -eq 0 ]; then
+              echo "✅ All tests passed!"
+              exit 0
+            else
+              echo "❌ Tests failed!"
+              exit 1
+            fi
+          else
+            echo "❌ No test report found!"
+            exit 1
+          fi
+

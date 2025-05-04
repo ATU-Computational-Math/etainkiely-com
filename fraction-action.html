@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ChecklistFraction Action & Superpower Learning - Turning fractions into superpowers through interactive, gamified learning experiences">
+    <title>Dr. Etain Kiely | ChecklistFraction Action & Superpower Learning</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- Add favicon here once available -->
+    <!-- <link rel="icon" href="assets/images/favicon.ico"> -->
+    <style>
+        /* Superhero Fraction Learning Components */
+        .superhero-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--deep-green) 0%, var(--header-green) 100%);
+            border-radius: 10px;
+            box-shadow: 0 8px 24px var(--green-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .superhero-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJ3aGl0ZSIgZmlsbC1vcGFjaXR5PSIwLjA1Ij48cGF0aCBkPSJNMjAgMTZMMzAgOCAgTDQwIDE2ICBMMzAgMjRMOCAxNloiLz48cGF0aCBkPSJNNDAgMTZMNTIgOCAgTDYwIDE2ICBMNDggMjRMMjQgMTYiLz48L2c+PC9zdmc+') repeat;
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .superhero-section > * {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .superhero-section h2, 
+        .superhero-section h3 {
+            color: var(--accent-gold);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .superhero-section p {
+            color: var(--light-gold);
+        }
+        
+        /* Mission Map */
+        .mission-map {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .mission-node {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border-left: 4px solid var(--deep-green);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .mission-node.completed {
+            border-left-color: var(--accent-gold);
+            background-color: rgba(214, 196, 138, 0.2);
+        }
+        
+        .mission-node.completed::after {
+            content: "⭐";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.5rem;
+        }
+        
+        .mission-node.locked {
+            opacity: 0.7;
+            filter: grayscale(0.5);
+        }
+        
+        .mission-node:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Achievement Badges */
+        .badge-collection {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .hero-badge {
+            background-color: white;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .hero-badge::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: conic-gradient(var(--accent-gold), var(--deep-green), var(--accent-gold));
+            border-radius: 50%;
+            z-index: -1;
+            padding: 4px;
+            margin: -4px;
+            opacity: 0.7;
+        }
+        
+        .hero-badge.locked {
+            filter: grayscale(1);
+            opacity: 0.5;
+        }
+        
+        .hero-badge.locked::before {
+            background: conic-gradient(#ccc, #999, #ccc);
+        }
+        
+        .hero-badge:hover {
+            transform: scale(1.05) rotate(5deg);
+        }
+        
+        .badge-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .badge-name {
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-align: center;
+            color: var(--deep-green);
+        }
+        
+        /* Superpower Cards */
+        .superpower-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .power-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent-gold);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .power-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--accent-gold);
+            border-radius: 0 0 0 40px;
+            opacity: 0.2;
+        }
+        
+        .power-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .power-icon {
+            font-size: 2rem;
+            color: var(--deep-green);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        /* Interactive Game Components */
+        .fraction-games {
+            margin: 2rem 0;
+        }
+        
+        .game-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--deep-green);
+        }
+        
+        .game-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        .game-image {
+            width: 100%;
+            height: 180px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--deep-green);
+        }
+        
+        .game-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.7rem;
+            background-color: var(--light-gold);
+            color: var(--deep-green);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        /* Mission-based Checklists */
+        .mission-checklist {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 1rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .checklist-item:last-child {
+            border-bottom: none;
+        }
+        
+        .task-checkbox {
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--deep-green);
+            border-radius: 4px;
+            margin-right: 1rem;
+            cursor: pointer;
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .task-checkbox:checked {
+            background-color: var(--deep-green);
+        }
+        
+        .task-checkbox:checked::after {
+            content: "✓";
+            position: absolute;
+            color: white;
+            font-size: 1rem;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .task-content {
+            flex: 1;
+        }
+        
+        .task-content h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .checklist-item.completed .task-content {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        
+        /* Progress Visualization */
+        .progress-container {
+            margin: 2rem 0;
+        }
+        
+        .progress-bar {
+            height: 25px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 12.5px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, var(--accent-gold), #FFD700);
+            width: 0;
+            transition: width 1s ease;
+            position: relative;
+        }
+        
+        .progress-label {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--deep-green);
+            font-weight: bold;
+            z-index: 10;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Milestone Achievements */
+        .milestone-container {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        .milestone-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1rem 2rem;
+            align-items: center;
+        }
+        
+        .milestone-icon {
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .milestone-content {
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .milestone-content:last-child {
+            border-bottom: none;
+        }
+        
+        .milestone-title {
+            font-weight: bold;
+            color: var(--accent-gold);
+            margin-bottom: 0.25rem;
+        }
+        
+        .milestone-detail {
+            color: var(--light-gold);
+            font-size: 0.9rem;
+        }
+        
+        /* Cooperative Challenges */
+        .cooperative-challenge {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent-gold);
+        }
+        
+        .challenge-team {
+            display: flex;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .team-member {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 120px;
+        }
+        
+        .member-avatar {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .member-name {
+            font-weight: bold;
+            color: var(--deep-green);
+            font-size: 0.9rem;
+            text-align: center;
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(214, 196, 138, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(214, 196, 138, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(214, 196, 138, 0.5); }
+        }
+        
+        .glow-animation {
+            animation: glow 2s infinite;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .mission-map,
+            .superpower-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .milestone-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .milestone-icon {
+                margin-bottom: 0.5rem;
+            }
+            
+            .badge-collection {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <h1 class="site-title"><a href="index.html">Dr. Etain Kiely</a></h1>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <nav>
+                <ul class="nav-list" id="navList">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="research.html" class="nav-link">Research</a></li>
+                    <li class="nav-item"><a href="teaching.html" class="nav-link">Teaching</a></li>
+                    <li class="nav-item"><a href="play2learn.html" class="nav-link">Play2Learn</a></li>
+                    <li class="nav-item"><a href="engaged-research.html" class="nav-link">Engaged Research</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="content-bg">
+                    <h2>ChecklistFraction Action & Superpower Learning</h2>
+                    <p class="text-gold">"Turning Fractions into Superpowers—One Heroic Mission at a Time!"</p>
+                    <p>An innovative, gamified learning framework that transforms the challenge of mastering fractions into an exciting superhero adventure. Through interactive games, mission-based checklists, and character-driven quests, students engage deeply with mathematical concepts, making abstract ideas tangible, memorable, and fun.</p>
+                    <div class="hero-buttons">
+                        <a href="#overview" class="btn">Explore Program</a>
+                        <a href="#missions" class="btn">View Missions</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Overview Section -->
+            <section id="overview">
+                <h2 class="section-title">Program Overview</h2>
+                <p>ChecklistFraction Action & Superpower Learning is designed to transform abstract fraction concepts into engaging superhero-themed adventures. Students progress through missions, earn badges, and develop mathematical "superpowers" as they master essential fraction skills.</p>
+                
+                <div class="milestone-container">
+                    <h3>What We've Achieved So Far</h3>
+                    <div class="milestone-grid">
+                        <span class="milestone-icon">🚀</span>
+                        <div class="milestone-content">
+                            <div class="milestone-title">Pilot Program Launched (3 Schools, 2024)</div>
+                            <div class="milestone-detail">Engaged over 200 students, with 85% reporting higher confidence in fractions.</div>
+                        </div>
+
+                        <span class="milestone-icon">🎮</span>
+                        <div class="milestone-content">
+                            <div class="milestone-title">Developed 5 Interactive Games</div>
+                            <div class="milestone-detail">Improved test scores by 20% on average (pre/post assessment).</div>
+                        </div>
+
+                        <span class="milestone-icon">🦸</span>
+                        <div class="milestone-content">
+                            <div class="milestone-title">Created 10 Superpower Learning Cards & Checklists</div>
+                            <div class="milestone-detail">Enabled self-paced learning, with students completing 90% of missions within deadlines.</div>
+                        </div>
+
+                        <span class="milestone-icon">👩‍🏫</span>
+                        <div class="milestone-content">
+                            <div class="milestone-title">Teacher Training & Feedback Loop</div>
+                            <div class="milestone-detail">Positive feedback on student engagement and ease of use.</div>
+                        </div>
+
+                        <span class="milestone-icon">📊</span>
+                        <div class="milestone-content">
+                            <div class="milestone-title">Data Insights Collected</div>
+                            <div class="milestone-detail">Revealed key gaps (e.g., common struggle: equivalent fractions), enabling adaptive redesign.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Mission System Section -->
+            <section id="missions" class="superhero-section">
+                <h2>Fraction Mission Headquarters</h2>
+                <p>Track your progress, accept new missions, and see which fraction superpowers you've unlocked!</p>
+                
+                <!-- Progress Overview -->
+                <div class="progress-container">
+                    <h3>Your Fraction Mastery Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" data-progress="65%" style="width: 0%">
+                            <span class="progress-label">65% Mastery Achieved</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mission Map -->
+                <h3>Active Missions</h3>
+                <div class="mission-map">
+                    <div class="mission-node completed">
+                        <h4>Basic Fraction Powers</h4>
+                        <p>Master the fundamentals of fractions and their representations</p>
+                        <span class="completion-status">Mission Complete!</span>
+                    </div>
+                    <div class="mission-node completed">
+                        <h4>Addition Mastery</h4>
+                        <p>Harness the power of adding fractions with like denominators</p>
+                        <span class="completion-status">Mission Complete!</span>
+                    </div>
+                    <div class="mission-node">
+                        <h4>Subtraction Strength</h4>
+                        <p>Develop skills in subtracting fractions effectively</p>
+                        <span class="completion-status">In Progress</span>
+                    </div>
+                    <div class="mission-node locked">
+                        <h4>Multiplication Force</h4>
+                        <p>Unlock the secrets of multiplying fractions</p>
+                        <span class="completion-status">Locked</span>
+                    </div>
+                </div>
+
+                <!-- Current Mission Checklist -->
+                <h3>Current Mission: Subtraction Strength</h3>
+                <div class="mission-checklist">
+                    <div class="checklist-item completed">
+                        <input type="checkbox" class="task-checkbox" checked disabled>
+                        <div class="task-content">
+                            <h4>Understand Fraction Subtraction</h4>
+                            <p>Learn the basic principles of subtracting fractions with the same denominator</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <h4>Master Different Denominators</h4>
+                            <p>Learn to find common denominators and subtract fractions with different denominators</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <h4>Mixed Number Subtraction</h4>
+                            <p>Practice subtracting mixed numbers and converting between improper fractions</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Superpower Cards Section -->
+            <section id="superpowers">
+                <h2 class="section-title">Fraction Superpowers</h2>
+                <p>Each card represents a mathematical skill mastered. Collect them all to become a Fraction Champion!</p>
+                
+                <div class="superpower-cards">
+                    <div class="power-card">
+                        <span class="power-icon">🎯</span>
+                        <h4>Fraction Explorer</h4>
+                        <p>Master the ability to identify and represent fractions in various forms</p>
+                        <ul>
+                            <li>Recognize fractions in everyday situations</li>
+                            <li>Convert between visual and numeric representations</li>
+                            <li>Understand part-whole relationships</li>
+                        </ul>
+                    </div>
+                    <div class="power-card">
+                        <span class="power-icon">⚡</span>
+                        <h4>Operation Master</h4>
+                        <p>Gain the power to perform fraction operations with confidence</p>
+                        <ul>
+                            <li>Add and subtract fractions</li>
+                            <li>Multiply fractions with ease</li>
+                            <li>Divide fractions like a pro</li>
+                        </ul>
+                    </div>
+                    <div class="power-card">
+                        <span class="power-icon">🔄</span>
+                        <h4>Conversion Champion</h4>
+                        <p>Transform fractions into their equivalent forms</p>
+                        <ul>
+                            <li>Find equivalent fractions</li>
+                            <li>Convert improper fractions to mixed numbers</li>
+                            <li>Simplify fractions to lowest terms</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Badge Collection -->
+                <h3>Achievement Badges</h3>
+                <div class="badge-collection">
+                    <div class="hero-badge">
+                        <span class="badge-icon">🎯</span>
+                        <span class="badge-name">Fraction Scout</span>
+                    </div>
+                    <div class="hero-badge">
+                        <span class="badge-icon">➕</span>
+                        <span class="badge-name">Addition Master</span>
+                    </div>
+                    <div class="hero-badge locked">
+                        <span class="badge-icon">➖</span>
+                        <span class="badge-name">Subtraction Hero</span>
+                    </div>
+                    <div class="hero-badge locked">
+                        <span class="badge-icon">✖️</span>
+                        <span class="badge-name">Multiplication Wizard</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Games Section -->
+            <section id="games" class="superhero-section">
+                <h2>Fraction Games</h2>
+                <p>Interactive games to reinforce fraction skills while having fun!</p>
+                <div class="fraction-games">
+                    <div class="game-container">
+                        <div class="game-image">⚡</div>
+                        <h4>Rescue Mission: Split the Fuel Supply</h4>
+                        <p>Help your superhero team distribute fuel equally among rescue vehicles by solving fraction division challenges.</p>
+                        <div class="game-actions">
+                            <a href="#" class="btn">Play Now</a>
+                            <span class="badge">Beginner Friendly</span>
+                        </div>
+                    </div>
+                    <div class="game-container">
+                        <div class="game-image">🎯</div>
+                        <h4>Fraction Target Practice</h4>
+                        <p>Test your fraction comparison skills by hitting the correct targets with your superhero powers.</p>
+                        <div class="game-actions">
+                            <a href="#" class="btn">Play Now</a>
+                            <span class="badge">Intermediate</span>
+                        </div>
+                    </div>
+                    <div class="game-container">
+                        <div class="game-image">🔄</div>
+                        <h4>Equivalent Fraction Matcher</h4>
+                        <p>Match pairs of equivalent fractions to clear the board and save the day!</p>
+                        <div class="game-actions">
+                            <a href="#" class="btn">Play Now</a>
+                            <span class="badge">All Levels</span>
+                        </div>
+                    </div>
+                </div>
+

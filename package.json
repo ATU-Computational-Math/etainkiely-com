@@ -1,0 +1,38 @@
+{
+  "name": "etainkiely-com",
+  "version": "1.0.0",
+  "description": "Dr. Etain Kiely's Academic Portfolio featuring ChecklistFraction Action & Superpower Learning",
+  "private": true,
+  "scripts": {
+    "test": "node scripts/deployment-tester.js http://localhost:8080",
+    "test:prod": "node scripts/deployment-tester.js https://etainkiely.github.io/etainkiely-com",
+    "serve": "npx http-server -p 8080",
+    "start": "npm run serve",
+    "test:local": "start npm run serve && timeout 2 && npm test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/etainkiely/etainkiely-com.git"
+  },
+  "keywords": [
+    "education",
+    "mathematics",
+    "fractions",
+    "gamification",
+    "learning"
+  ],
+  "author": "Dr. Etain Kiely",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/etainkiely/etainkiely-com/issues"
+  },
+  "homepage": "https://etainkiely.github.io/etainkiely-com"
+}
+

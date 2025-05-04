@@ -3,17 +3,39 @@
    A mobile-first responsive design
 */
 
-/* CSS Variables for consistent color scheme */
+/* ==========================================
+   1. CSS Variables and Reset
+   ========================================== */
 :root {
-  --primary-green-header: #006633;
-  --primary-green-bg: #4D5A46;
+  /* Primary Colors */
+  --header-green: #2D3A2E;
+  --deep-green: #3A4634;
   --accent-gold: #D6C48A;
-  --text-light: #f8f8f8;
-  --text-dark: #333;
-  --body-bg: #f5f5f5;
+  --light-gold: #F5F1E9;
+  
+  /* Text Colors */
+  --text-light: #FFFFFF;
+  --text-dark: #1a1a1a;
+  --body-bg: #FFFFFF;
+  
+  /* Interactive Colors */
+  --hover-gold: #BFA85F;
+  --hover-green: #2D3A2E;
+  
+  /* Accent Colors */
+  --border-gold: #BFA85F;
+  --border-green: #3A4634;
+  --very-dark-green: #1a1a1a;
+  
+  /* Layout variables */
+  --container-width: 1200px;
   --container-padding: 1rem;
   --section-spacing: 2rem;
   --transition-speed: 0.3s;
+  
+  /* Effect variables */
+  --green-shadow: rgba(45, 58, 46, 0.2);
+  --green-light: rgba(45, 58, 46, 0.1);
 }
 
 /* Reset and base styles */
@@ -28,6 +50,9 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ==========================================
+   2. Base Styles
+   ========================================== */
 body {
   font-family: 'Arial', sans-serif;
   line-height: 1.6;
@@ -44,30 +69,56 @@ img {
 }
 
 a {
-  color: var(--primary-green-header);
+  color: var(--deep-green);
   text-decoration: none;
   transition: color var(--transition-speed) ease;
+  font-weight: 500;
 }
 
 a:hover, a:focus {
-  color: var(--accent-gold);
+  color: var(--hover-gold);
+  text-decoration: underline;
 }
 
-/* Container for content */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  color: var(--deep-green);
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+ul, ol {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+/* ==========================================
+   3. Layout Components
+   ========================================== */
+
+/* Container */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 var(--container-padding);
 }
 
-/* Header styles */
+/* Header */
 header {
-  background-color: var(--primary-green-header);
+  background-color: var(--header-green);
   color: var(--text-light);
   padding: 1rem 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 10px var(--green-shadow);
   position: relative;
+  background-image: linear-gradient(to bottom, var(--header-green), rgba(45, 58, 46, 0.9));
 }
 
 .header-content {
@@ -92,9 +143,13 @@ nav {
 
 .nav-list {
   list-style: none;
-  display: flex;
+  display: none;
   flex-direction: column;
   width: 100%;
+}
+
+.nav-active {
+  display: flex;
 }
 
 .nav-item {
@@ -108,10 +163,32 @@ nav {
   color: var(--text-light);
   font-weight: bold;
   border-bottom: 2px solid transparent;
-  transition: border-color var(--transition-speed) ease;
+  transition: all var(--transition-speed) ease;
+  position: relative;
 }
 
-.nav-link:hover, .nav-link:focus, .nav-link.active {
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-gold);
+  transition: all var(--transition-speed) ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover, .nav-link:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link:hover::after, .nav-link:focus::after, .nav-link.active::after {
+  width: 80%;
+}
+
+.nav-link.active {
+  background-color: rgba(0, 0, 0, 0.1);
   border-bottom-color: var(--accent-gold);
 }
 
@@ -128,14 +205,6 @@ nav {
   top: 1rem;
 }
 
-.nav-list {
-  display: none;
-}
-
-.nav-active {
-  display: flex;
-}
-
 /* Main content areas */
 main {
   flex: 1;
@@ -146,22 +215,74 @@ section {
   margin-bottom: var(--section-spacing);
 }
 
+section:not(:last-child) {
+  border-bottom: 1px solid var(--green-light);
+  padding-bottom: 2rem;
+}
+
 .section-title {
-  color: var(--primary-green-header);
+  color: var(--deep-green);
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--accent-gold);
   font-size: 1.8rem;
 }
 
-.content-bg {
-  background-color: var(--primary-green-bg);
+/* Footer */
+footer {
+  background-color: var(--header-green);
   color: var(--text-light);
-  padding: 1.5rem;
-  border-radius: 5px;
+  padding: 2rem 0;
+  margin-top: auto;
+  background-image: linear-gradient(to bottom, var(--header-green), rgba(45, 58, 46, 0.9));
 }
 
-/* Highlight container and cards */
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+/* ==========================================
+   4. Components
+   ========================================== */
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--accent-gold);
+  color: var(--very-dark-green);
+  border-radius: 4px;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+  text-align: center;
+  box-shadow: 0 2px 4px var(--green-shadow);
+  border: 2px solid var(--accent-gold);
+}
+
+.btn:hover, .btn:focus {
+  background-color: var(--hover-gold);
+  color: var(--text-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--green-shadow);
+  border-color: var(--hover-gold);
+}
+
+.hero-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Cards/Highlights */
 .highlight-container {
   display: grid;
   grid-template-columns: 1fr;
@@ -170,24 +291,48 @@ section {
 }
 
 .highlight {
-  background-color: var(--body-bg);
-  border-radius: 8px;
+  background-color: var(--text-light);
   padding: 1.5rem;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px var(--green-shadow);
+  border-left: 4px solid var(--deep-green);
+  transition: all var(--transition-speed) ease;
+  position: relative;
+}
+
+.highlight::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--accent-gold);
+  transition: background-color var(--transition-speed) ease;
 }
 
 .highlight:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px var(--green-shadow);
+  border-left-color: var(--border-green);
+  background-color: var(--light-gold);
+}
+
+.highlight:hover::after {
+  background-color: var(--hover-gold);
 }
 
 .highlight h3 {
-  color: var(--primary-green-header);
+  color: var(--header-green);
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--accent-gold);
   font-size: 1.4rem;
+}
+
+.highlight p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
 }
 
 .highlight ul {
@@ -204,63 +349,162 @@ section {
   margin-top: 0.5rem;
 }
 
-/* Footer styles */
-footer {
-  background-color: var(--primary-green-header);
+/* Content Backgrounds */
+.content-bg {
+  background: linear-gradient(to bottom, var(--header-green), var(--deep-green));
+  color: var(--light-gold);
+  padding: 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px var(--green-shadow);
+  border: 1px solid var(--green-light);
+  transition: all var(--transition-speed) ease;
+}
+
+.content-bg h2, .content-bg h3 {
+  color: var(--accent-gold);
+  margin-bottom: 1rem;
+}
+
+.content-bg p, .content-bg li {
+  color: var(--light-gold);
+  line-height: 1.6;
+}
+
+.content-bg a {
+  color: var(--accent-gold);
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+  text-decoration: underline;
+}
+
+.content-bg a:hover, .content-bg a:focus {
   color: var(--text-light);
-  padding: 1.5rem 0;
-  margin-top: auto;
+  text-decoration: underline;
 }
 
-.footer-content {
-  text-align: center;
+/* Hero Section */
+.hero {
+  margin-bottom: 2.5rem;
+  margin-top: -2rem;
+  padding: 4rem 0;
 }
 
+.hero .content-bg {
+  padding: 2.5rem;
+  border-radius: 8px;
+  background-color: var(--deep-green);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--green-light);
+  box-shadow: 0 8px 24px var(--green-shadow);
+}
+
+.hero .content-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(135deg, rgba(45, 58, 46, 0.85) 0%, rgba(58, 70, 52, 0.95) 100%);
+  z-index: 1;
+}
+
+.hero .content-bg > * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero h2 {
+  margin-bottom: 1rem;
+  color: var(--accent-gold);
+  font-size: 2rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+  margin-bottom: 1.5rem;
+  color: var(--light-gold);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.hero p.text-gold {
+  color: var(--accent-gold);
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+/* Social Links */
 .social-links {
   display: flex;
-  justify-content: center;
+  gap: 1.5rem;
   margin: 1rem 0;
 }
 
 .social-link {
   color: var(--accent-gold);
-  font-size: 1.5rem;
-  margin: 0 0.5rem;
+  font-size: 1.1rem;
+  transition: all var(--transition-speed) ease;
 }
 
-.copyright {
-  font-size: 0.875rem;
+.social-link:hover {
+  color: var(--text-light);
+  transform: translateY(-2px);
 }
 
-/* Utility classes */
+/* Blockquote */
+blockquote {
+  border-left: 4px solid var(--accent-gold);
+  padding: 1rem 1.5rem;
+  font-style: italic;
+  margin: 1.5rem 0;
+  background-color: rgba(58, 70, 52, 0.05);
+  border-radius: 0 4px 4px 0;
+}
+
+/* ==========================================
+   5. Utility Classes
+   ========================================== */
 .text-gold {
   color: var(--accent-gold);
 }
 
-.btn {
-  display: inline-block;
-  padding: 0.625rem 1.25rem;
-  background-color: var(--primary-green-header);
-  color: var(--text-light);
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  transition: all var(--transition-speed) ease;
-  text-align: center;
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
-.btn:hover, .btn:focus {
-  background-color: var(--accent-gold);
-  color: var(--primary-green-header);
-  transform: translateY(-2px);
-  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+/* Enhanced focus states for accessibility */
+a:focus, button:focus, .btn:focus {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+  text-decoration: none;
 }
 
-/* Responsive breakpoints */
+input:focus, textarea:focus, select:focus {
+  border-color: var(--header-green);
+  box-shadow: 0 0 0 3px var(--green-light);
+  outline: none;
+}
+
+/* List styling */
+ul li::marker {
+  color: var(--header-green);
+}
+
+/* ==========================================
+   6. Media Queries
+   ========================================== */
 /* Tablet and above */
 @media (min-width: 768px) {
   .header-content {
@@ -281,46 +525,37 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    gap: 1.5rem;
+    width: auto;
   }
   
   .nav-item {
-    margin: 0 0.5rem;
+    margin: 0;
   }
   
-  .nav-link {
-    padding: 0.5rem 1rem;
-  }
-  
-  /* Highlight container responsive grid */
+  /* Grid layouts */
   .highlight-container {
     grid-template-columns: repeat(2, 1fr);
   }
   
+  /* Typography */
   .hero h2 {
-    font-size: 2.25rem;
+    font-size: 2.5rem;
   }
   
-  .hero p {
-    font-size: 1.1rem;
+  .section-title {
+    font-size: 2rem;
   }
 }
 
-/* Desktop and above */
+/* Desktop */
 @media (min-width: 1024px) {
   .container {
     padding: 0 2rem;
   }
   
-  .site-title {
-    font-size: 2rem;
-  }
-  
-  .nav-link {
-    padding: 0.5rem 1.5rem;
-  }
-  
-  .section-title {
-    font-size: 2rem;
+  .highlight-container {
+    grid-template-columns: repeat(3, 1fr);
   }
   
   .hero .content-bg {
@@ -328,11 +563,7 @@ footer {
   }
   
   .hero h2 {
-    font-size: 2.5rem;
-  }
-  
-  .highlight h3 {
-    font-size: 1.5rem;
+    font-size: 3rem;
   }
 }
 
