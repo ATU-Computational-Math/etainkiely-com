@@ -1,0 +1,506 @@
+/* 
+   Play2Learn CSS for etainkiely-com 
+   Extension of main.css with specific styles for the Play2Learn page
+*/
+
+/* ==========================================
+   1. Variables and base styles 
+   ========================================== */
+:root {
+  /* Inherit main color scheme */
+  --header-green: #2D3A2E;
+  --deep-green: #3A4634;
+  --accent-gold: #D6C48A;
+  --light-gold: #F5F1E9;
+  --text-light: #FFFFFF;
+  --text-dark: #1a1a1a;
+  --hover-gold: #BFA85F;
+  --hover-green: #2D3A2E;
+  --border-gold: #BFA85F;
+  --border-green: #3A4634;
+  --green-shadow: rgba(45, 58, 46, 0.2);
+  --green-light: rgba(45, 58, 46, 0.1);
+}
+
+/* ==========================================
+   2. Hero Section 
+   ========================================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 3rem;
+  margin-top: -2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 4px 12px var(--green-shadow);
+}
+
+.hero .content-bg {
+  width: 100%;
+  border-radius: 0 0 8px 8px;
+  padding: 2rem;
+}
+
+/* ==========================================
+   3. Highlights and Initiatives 
+   ========================================== */
+.highlight-icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--accent-gold);
+  text-align: center;
+}
+
+.section-image {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto 1.5rem;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px var(--green-shadow);
+}
+
+/* ==========================================
+   4. Partnership Map 
+   ========================================== */
+.partnership-map {
+  background-color: var(--light-gold);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  position: relative;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.partnership-description {
+  display: none;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  border: 1px solid var(--deep-green);
+  border-radius: 5px;
+  padding: 1rem;
+  width: 250px;
+  z-index: 100;
+  box-shadow: 0 4px 12px var(--green-shadow);
+}
+
+.partner-country {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  min-width: 150px;
+  transition: all 0.3s ease;
+}
+
+.partner-country:hover, 
+.partner-country:focus {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px var(--green-shadow);
+  outline: none;
+}
+
+.partner-country:hover .partnership-description,
+.partner-country:focus-within .partnership-description {
+  display: block;
+}
+
+.country-flag {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.country-name {
+  font-weight: bold;
+  color: var(--deep-green);
+  margin-bottom: 0.25rem;
+}
+
+.country-focus {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+.notice {
+  font-style: italic;
+  color: var(--deep-green);
+  background-color: rgba(214, 196, 138, 0.2);
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+
+.partner-contact {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid #eee;
+  padding-top: 0.5rem;
+}
+
+.partner-outcome {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--header-green);
+}
+
+/* ==========================================
+   5. Resource Cards 
+   ========================================== */
+.resource-card {
+  background-color: var(--light-gold);
+  border-radius: 5px;
+  padding: 1.25rem;
+  transition: all 0.3s ease;
+  border-left: 4px solid var(--deep-green);
+  margin-bottom: 1rem;
+}
+
+.resource-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px var(--green-shadow);
+}
+
+.resource-card:focus-within {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px var(--green-shadow);
+  outline: 2px solid var(--accent-gold);
+}
+
+.resource-card h4 {
+  color: var(--header-green);
+  margin-bottom: 0.75rem;
+}
+
+/* Resource links */
+.download-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.75rem;
+  font-weight: 600;
+}
+
+.download-link:before {
+  content: "📥";
+  margin-right: 0.5rem;
+}
+
+/* ==========================================
+   6. Testimonials 
+   ========================================== */
+.testimonial {
+  margin: 2rem 0;
+}
+
+.testimonial blockquote {
+  background-color: var(--light-gold);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 0 3px 10px var(--green-shadow);
+  border-left: 5px solid var(--accent-gold);
+}
+
+.testimonial blockquote footer {
+  margin-top: 1rem;
+  text-align: right;
+  font-weight: 600;
+  color: var(--deep-green);
+}
+
+/* ==========================================
+   7. Checklist Items 
+   ========================================== */
+.task-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid var(--deep-green);
+  border-radius: 3px;
+  margin-right: 0.75rem;
+  position: relative;
+  cursor: pointer;
+  vertical-align: middle;
+  background-color: white;
+}
+
+.task-checkbox:checked {
+  background-color: var(--deep-green);
+  border-color: var(--deep-green);
+}
+
+.task-checkbox:checked::after {
+  content: "✓";
+  position: absolute;
+  color: white;
+  font-size: 1rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.task-content {
+  flex: 1;
+}
+
+.task-content h4 {
+  margin-bottom: 0.5rem;
+}
+
+.checklist-item.completed .task-content {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* ==========================================
+   8. Progress Visualization 
+   ========================================== */
+.progress-container {
+  margin: 2rem 0;
+}
+
+.progress-bar {
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 12.5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--accent-gold), #FFD700);
+  width: 0;
+  transition: width 1s ease;
+  position: relative;
+}
+
+.progress-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--deep-green);
+  font-weight: bold;
+  z-index: 10;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+/* ==========================================
+   9. Milestone Achievements 
+   ========================================== */
+.milestone-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.milestone-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem 2rem;
+  align-items: center;
+}
+
+.milestone-icon {
+  font-size: 1.5rem;
+  color: var(--accent-gold);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.milestone-content {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.milestone-content:last-child {
+  border-bottom: none;
+}
+
+.milestone-title {
+  font-weight: bold;
+  color: var(--accent-gold);
+  margin-bottom: 0.25rem;
+}
+
+.milestone-detail {
+  color: var(--light-gold);
+  font-size: 0.9rem;
+}
+
+/* ==========================================
+   10. Cooperative Challenges 
+   ========================================== */
+.cooperative-challenge {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-left: 4px solid var(--accent-gold);
+}
+
+.challenge-team {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.team-member {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
+}
+
+.member-avatar {
+  width: 60px;
+  height: 60px;
+  background-color: var(--accent-gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.member-name {
+  font-weight: bold;
+  color: var(--deep-green);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* ==========================================
+   11. Animations 
+   ========================================== */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 0 5px rgba(214, 196, 138, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(214, 196, 138, 0.8); }
+  100% { box-shadow: 0 0 5px rgba(214, 196, 138, 0.5); }
+}
+
+.glow-animation {
+  animation: glow 2s infinite;
+}
+
+/* ==========================================
+   12. Accessibility 
+   ========================================== */
+/* Focus styles for accessibility */
+a:focus,
+button:focus,
+.task-checkbox:focus {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+}
+
+/* Skip to content for accessibility */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-to-content:focus {
+  left: 0;
+  top: 0;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  background: var(--deep-green);
+  color: white;
+  z-index: 1000;
+}
+
+/* ==========================================
+   13. Media Queries 
+   ========================================== */
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .hero {
+    padding: 1rem 0;
+  }
+  
+  .hero-image {
+    max-height: 300px;
+  }
+  
+  .hero .content-bg {
+    padding: 1rem;
+  }
+  
+  .partnership-map {
+    padding: 1rem;
+  }
+  
+  .partner-country {
+    min-width: 120px;
+  }
+}
+
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .highlight-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .partnership-map {
+    justify-content: space-around;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .hero .content-bg {
+    padding: 2.5rem;
+  }
+  
+  .partnership-map {
+    padding: 2rem;
+  }
+  
+  .highlight-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+

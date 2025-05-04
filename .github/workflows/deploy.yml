@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+﻿name: Deploy to GitHub Pages
 
 on:
   push:
@@ -9,6 +9,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  deployments: write
 
 # Allow only one concurrent deployment
 concurrency:
@@ -16,7 +17,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -24,26 +25,34 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
+
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
         with:
           path: '.'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-        
+
       - name: Verify deployment
         if: success()
         run: |
           echo "Waiting for GitHub Pages to update..."
-          sleep 30
-          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://etainkiely.github.io/etainkiely-com)
+          sleep 60
+          SITE_URL="https://atu-computational-math.github.io/etainkiely-com"
+          echo "Checking deployment at: $SITE_URL"
+          HTTP_STATUS=$(curl -s -o /dev/null -w "%{http_code}" $SITE_URL)
           echo "Deployment status: $HTTP_STATUS"
           if [ $HTTP_STATUS -ge 200 ] && [ $HTTP_STATUS -lt 400 ]; then
             echo "Deployment verified successfully!"
           else
             echo "Warning: Deployment verification returned status $HTTP_STATUS"
+            if [ $HTTP_STATUS -eq 404 ]; then
+              echo "404 Error: Please ensure GitHub Pages is enabled in repository settings"
+              echo "Go to Settings > Pages and ensure source is set to 'GitHub Actions'"
+            fi
           fi
-
