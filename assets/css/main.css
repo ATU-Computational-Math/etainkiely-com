@@ -113,23 +113,67 @@ li {
 
 /* Header */
 header {
-  background-color: var(--header-green);
+  background: linear-gradient(to right, var(--header-green), var(--deep-green));
   color: var(--text-light);
-  padding: 1rem 0;
+  padding: 2rem 0; /* Increased padding */
   box-shadow: 0 2px 10px var(--green-shadow);
   position: relative;
-  background-image: linear-gradient(to bottom, var(--header-green), rgba(45, 58, 46, 0.9));
 }
-
+/* Header */
 .header-content {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  height: 80px;
+}
+
+.site-logo {
+  height: 120px;  /* Increased size for desktop */
+  width: auto;
+  margin-right: 2rem;  /* Increased margin to match new size */
+  object-fit: contain;
+  transition: all var(--transition-speed) ease;
+}
+
+.logo-title-wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: auto; /* Push navigation to the right */
+  text-decoration: none;
+  color: var(--text-light);
+}
+
+.logo-title-wrapper:hover {
+  text-decoration: none;
+}
+
+/* Profile image styling */
+.profile-pic {
+  width: 120px; /* Increased to match logo size */
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--accent-gold); /* Slightly thicker border */
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
+  object-fit: cover;
+  transition: all var(--transition-speed) ease;
 }
 
 .site-title {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-light);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Add subtitle for professional title */
+.site-subtitle {
+  font-size: 1.1rem;
+  color: var(--accent-gold);
+  font-weight: 500;
+  margin-top: 0.2rem;
 }
 
 .site-title a {
@@ -138,58 +182,120 @@ header {
 
 /* Navigation */
 nav {
-  width: 100%;
+  margin-left: auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .nav-list {
   list-style: none;
-  display: none;
-  flex-direction: column;
-  width: 100%;
-}
-
-.nav-active {
   display: flex;
+  align-items: stretch; /* Change to stretch for consistent heights */
+  gap: 1.5rem;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: auto;
 }
 
 .nav-item {
-  margin: 0.5rem 0;
-  text-align: center;
-}
-
-.nav-link {
-  display: block;
-  padding: 0.5rem;
-  color: var(--text-light);
-  font-weight: bold;
-  border-bottom: 2px solid transparent;
-  transition: all var(--transition-speed) ease;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
   position: relative;
 }
 
+.nav-link {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  color: var(--text-light);
+  font-weight: bold;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.2s ease;
+  white-space: nowrap; /* Prevent text wrapping */
+  border-radius: 4px;
+  margin: 0.25rem 0;
+}
+
+/* Mobile nav styles */
+@media (max-width: 767px) {
+  .nav-list {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 0;
+  }
+  
+  .nav-active {
+    display: flex;
+  }
+  
+  .nav-item {
+    height: auto;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .nav-link {
+    padding: 0.75rem 1rem;
+    width: 100%;
+    justify-content: center;
+    border-bottom: none;
+    margin: 0.1rem 0;
+    border-radius: 0;
+  }
+  
+  .nav-link:hover,
+  .nav-link:focus,
+  .nav-link.active {
+    transform: none; /* No vertical shift on mobile */
+  }
+  
+  .nav-link::after {
+    bottom: 0;
+    width: 0;
+  }
+  
+  .nav-link.active::after {
+    width: 80%;
+  }
+}
 .nav-link::after {
   content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
   width: 0;
-  height: 2px;
+  height: 3px;
   background-color: var(--accent-gold);
-  transition: all var(--transition-speed) ease;
+  transition: all 0.2s ease-out;
   transform: translateX(-50%);
 }
 
 .nav-link:hover, .nav-link:focus {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.15);
+  color: var(--accent-gold);
+  transform: translateY(-1px);
 }
 
-.nav-link:hover::after, .nav-link:focus::after, .nav-link.active::after {
-  width: 80%;
+.nav-link:hover::after, 
+.nav-link:focus::after, 
+.nav-link.active::after {
+  width: 100%;
 }
 
 .nav-link.active {
-  background-color: rgba(0, 0, 0, 0.1);
-  border-bottom-color: var(--accent-gold);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: var(--accent-gold);
+  font-weight: 700;
+  transform: translateY(-1px);
 }
 
 /* Mobile hamburger menu */
@@ -505,34 +611,70 @@ ul li::marker {
 /* ==========================================
    6. Media Queries
    ========================================== */
-/* Tablet and above */
-@media (min-width: 768px) {
+/* Mobile adjustments for larger logo */
+@media (max-width: 767px) {
   .header-content {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    height: auto;
+    padding: 1rem 0;
+  }
+  
+  .site-logo {
+    height: 85px;  /* Larger on mobile but still proportional */
+  }
+  
+  .profile-pic {
+    width: 85px;
+    height: 85px;
+    border-width: 3px; /* Adjust border for smaller size */
   }
   
   .site-title {
-    margin-bottom: 0;
+    font-size: 1.8rem;
   }
   
+  .site-subtitle {
+    font-size: 1rem;
+  }
+  
+  header {
+    padding: 1rem 0;
+  }
+  
+  .logo-title-wrapper {
+    gap: 1rem; /* Reduced gap for mobile */
+    margin-bottom: 0.5rem;
+  }
+  
+  nav {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+/* Tablet and above */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Tablet-specific adjustments */
+  .site-logo {
+    height: 100px; /* Medium size for tablets */
+  }
+  
+  .profile-pic {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (min-width: 768px) {
+  .header-content {
+    flex-direction: row;
+  }
+
   .menu-toggle {
     display: none;
   }
-  
-  .nav-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    gap: 1.5rem;
-    width: auto;
-  }
-  
-  .nav-item {
-    margin: 0;
-  }
-  
+
+  /* Grid layouts */
   /* Grid layouts */
   .highlight-container {
     grid-template-columns: repeat(2, 1fr);

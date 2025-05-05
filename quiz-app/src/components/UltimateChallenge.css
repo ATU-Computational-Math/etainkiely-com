@@ -1,0 +1,631 @@
+/* Ultimate Challenge Container */
+.ultimate-container {
+  width: 100%;
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 2.5rem;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  position: relative;
+  color: white;
+  overflow: hidden;
+}
+
+.ultimate-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+  border-radius: 15px;
+}
+
+/* Header */
+.ultimate-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.8s ease;
+}
+
+.ultimate-header h1 {
+  font-size: 3rem;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  animation: pulsateText 2s infinite;
+}
+
+.ultimate-subtitle {
+  font-size: 1.2rem;
+  margin: 0.5rem 0 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Progress Bar */
+.ultimate-progress-container {
+  width: 100%;
+  height: 14px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 7px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) inset;
+}
+
+.ultimate-progress-bar {
+  height: 100%;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  transition: width 0.5s ease;
+  border-radius: 7px;
+  box-shadow: 0 0 8px rgba(0, 114, 255, 0.6);
+}
+
+.ultimate-progress-text {
+  position: absolute;
+  top: 16px;
+  right: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+/* Timer */
+.ultimate-timer {
+  width: 100%;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2) inset;
+}
+
+.ultimate-timer-bar {
+  height: 100%;
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  transition: width 1s linear;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 114, 255, 0.6);
+}
+
+.ultimate-timer-bar.ultimate-timer-low {
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  animation: pulsate 1s infinite;
+  box-shadow: 0 0 10px rgba(255, 75, 43, 0.6);
+}
+
+.ultimate-timer-text {
+  position: absolute;
+  right: 0;
+  top: 12px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.fast-answer-indicator {
+  margin-left: 8px;
+  color: #ffdd59;
+  font-weight: bold;
+  animation: pulse 1.5s infinite;
+}
+
+/* Stats */
+.ultimate-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ultimate-streak, .ultimate-bonus {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 20px;
+}
+
+.streak-icon, .bonus-icon {
+  font-size: 1.2rem;
+}
+
+/* Question Container */
+.ultimate-question-container {
+  margin-bottom: 2rem;
+  position: relative;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  animation: fadeIn 0.5s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ultimate-question-text {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Question Image */
+.ultimate-question-image-container {
+  width: 100%;
+  max-height: 320px;
+  overflow: hidden;
+  margin: 1.5rem 0;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.ultimate-question-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.5s ease;
+}
+
+.ultimate-question-image:hover {
+  transform: scale(1.05);
+}
+
+/* Difficulty & Points Badges */
+.ultimate-difficulty-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.ultimate-difficulty-easy {
+  background: linear-gradient(to right, #56ab2f, #a8e063);
+}
+
+.ultimate-difficulty-medium {
+  background: linear-gradient(to right, #f2994a, #f2c94c);
+}
+
+.ultimate-difficulty-hard {
+  background: linear-gradient(to right, #ff416c, #ff4b2b);
+}
+
+.ultimate-points-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Answer Options */
+.ultimate-answers-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.ultimate-answer-option {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1.3rem;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(3px);
+}
+
+.ultimate-answer-option:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.ultimate-answer-option.selected {
+  border-color: #00c6ff;
+  background-color: rgba(0, 198, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
+}
+
+.ultimate-answer-option.correct {
+  border-color: #56ab2f;
+  background-color: rgba(86, 171, 47, 0.3);
+  animation: correctGlow 1.5s ease;
+}
+
+.ultimate-answer-option.incorrect {
+  border-color: #ff416c;
+  background-color: rgba(255, 65, 108, 0.3);
+  animation: incorrectShake 0.8s ease;
+}
+
+.ultimate-answer-text {
+  font-size: 1.1rem;
+  color: white;
+  flex-grow: 1;
+  text-align: left;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.ultimate-answer-icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.ultimate-answer-option.correct .ultimate-answer-icon {
+  color: #56ab2f;
+  text-shadow: 0 0 10px rgba(86, 171, 47, 0.8);
+}
+
+.ultimate-answer-option.incorrect .ultimate-answer-icon {
+  color: #ff416c;
+  text-shadow: 0 0 10px rgba(255, 65, 108, 0.8);
+}
+
+/* Answer Explanation */
+.ultimate-answer-explanation {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-left: 4px solid #00c6ff;
+  border-radius: 0 10px 10px 0;
+  animation: fadeInLeft 0.6s ease;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.ultimate-answer-explanation h3 {
+  margin-top: 0;
+  color: #fff;
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.ultimate-answer-explanation p {
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+/* Action Buttons */
+.ultimate-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  gap: 1.5rem;
+}
+
+.ultimate-submit-button, .ultimate-next-button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+  min-width: 180px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ultimate-submit-button {
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+  color: white;
+}
+
+.ultimate-submit-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 114, 255, 0.4);
+}
+
+.ultimate-submit-button:disabled {
+  background: linear-gradient(to right, #bdc3c7, #95a5a6);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ultimate-next-button {
+  background: linear-gradient(to right, #56ab2f, #a8e063);
+  color: white;
+  animation: pulseGlow 2s infinite;
+}
+
+.ultimate-next-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(86, 171, 47, 0.4);
+}
+
+.ultimate-back-button {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: white;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+  backdrop-filter: blur(3px);
+}
+
+.ultimate-back-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: white;
+  transform: translateY(-2px);
+}
+
+/* Current Score Display */
+.ultimate-current-score {
+  margin-top: 2rem;
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Achievements Indicator */
+.ultimate-achievements-indicator {
+  margin-top: 1rem;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(to right, #f2994a, #f2c94c);
+  color: white;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  animation: achievementPulse 2s infinite;
+  box-shadow: 0 4px 15px rgba(242, 153, 74, 0.4);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.achievements-icon {
+  font-size: 1.4rem;
+}
+
+/* Loading Screen */
+.ultimate-loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.ultimate-loading h2 {
+  font-size: 2rem;
+  margin: 2rem 0 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.ultimate-loading p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ultimate-loading-spinner {
+  width: 80px;
+  height: 80px;
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+/* Results Screen */
+.ultimate-results {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background-size: 300% 300%;
+  animation: gradientShift 15s ease infinite;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.ultimate-results h2 {
+  font-size: 3rem;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  animation: pulsateText 2s infinite;
+}
+
+.ultimate-score-display {
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  display: inline-block;
+  min-width: 300px;
+}
+
+.ultimate-score-display p {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.8rem;
+}
+
+.ultimate-final-score {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #00c6ff;
+  text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+}
+
+.ultimate-score-percentage {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: white;
+  margin: 1.5rem 0;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.ultimate-time-bonus {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #a8e063;
+  text-shadow: 0 0 10px rgba(168, 224, 99, 0.5);
+}
+
+.achievements-section {
+  margin: 3rem 0;
+}
+
+.achievements-section h3 {
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.achievement-card {
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 1.5rem;
+  border-radius: 15px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  animation: achievementReveal 0.5s ease;
+}
+
+.achievement-card:hover {
+  transform: translateY(-5px);
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+}
+
+.achievement-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+  animation: iconFloat 3s ease-in-out infinite;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.achievement-card h4 {
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.achievement-card p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.ultimate-result-message {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+}
+
+.ultimate-result-message p {
+  font-size: 1.3rem;
+  color: white;
+  line-height: 1.6;
+}
+
+.ultimate-restart-button {
+  padding: 1.2rem 2.5rem;
+  font-size: 1.3rem;
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+  margin-top: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 114, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ultimate-restart-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 114, 255, 0.4);
+}
+
+/* Animations */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 
+

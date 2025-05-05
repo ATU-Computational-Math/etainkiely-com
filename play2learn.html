@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Global Play2Learn Academy by Dr. Etain Kiely - Integrating computational mathematics with game-based learning across cultures. Explore our initiatives, resources, and global partnerships.">
-    <title>Dr. Etain Kiely | Global Play2Learn</title>
+    <meta name="description" content="Global Play2Learn Academy - Integrating computational mathematics with game-based learning across cultures. Explore initiatives, resources, and global partnerships.">
+    <title>Global Play2Learn</title>
     <link rel="stylesheet" href="assets/css/main.css">
     <link rel="stylesheet" href="assets/css/play2learn.css">
 </head>
@@ -12,12 +12,13 @@
     <a href="#main-content" class="skip-to-content">Skip to main content</a>
     <header>
         <div class="container header-content">
-            <h1 class="site-title"><a href="index.html">Dr. Etain Kiely</a></h1>
-            <button class="menu-toggle" id="menuToggle">â˜°</button>
+            <a href="index.html" class="logo-title-wrapper">
+                <img src="assets/images/logo.jpg" alt="Site Logo" class="site-logo">
+            </a>
+            <button class="menu-toggle" id="menuToggle">☰</button>
             <nav>
                 <ul class="nav-list" id="navList">
                     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="research.html" class="nav-link">Research</a></li>
                     <li class="nav-item"><a href="teaching.html" class="nav-link">Teaching</a></li>
                     <li class="nav-item"><a href="play2learn.html" class="nav-link active">Play2Learn</a></li>
@@ -31,15 +32,14 @@
         <div class="container">
             <!-- Hero Section -->
             <section class="hero">
-                <img src="assets/images/globalplay2learnheader.png" alt="Global Play2Learn Initiative" class="hero-image">
-                <div class="content-bg">
-                    <h2>Global Play2Learn</h2>
-                    <p>Our PLAY framework cultivates collaboration, knowledge transfer, real-world application, and active engagement within global learning communities. By making learning fun and engaging through gamification, we unlock creativity and critical thinking skills while driving sustainability through education.</p>
-                    <div class="hero-buttons">
-                        <a href="#initiatives" class="btn">Explore Initiatives</a>
-                        <a href="#impact" class="btn">View Impact</a>
-                    </div>
+                <h2>Global Play2Learn</h2>
+                <p style="color: var(--light-gold); margin: 1rem 0 1.5rem; max-width: 850px; text-align: center;">Our PLAY framework cultivates collaboration, knowledge transfer, real-world application, and active engagement within global learning communities. By making learning fun and engaging through gamification, we unlock creativity and critical thinking skills while driving sustainability through education.</p>
+                <div class="hero-buttons" style="margin-bottom: 2rem;">
+                    <a href="#resources" class="btn">Resources</a>
+                    <a href="#initiatives" class="btn">Explore Initiatives</a>
+                    <a href="#impact" class="btn">Competition</a>
                 </div>
+                <img src="assets/images/globalplay2learnheader.png" alt="Global Play2Learn Initiative" class="hero-image" style="max-height: none; height: auto;">
             </section>
 
             <!-- Key Initiatives Section -->
@@ -47,10 +47,46 @@
                 <h2 class="section-title" style="margin-top: 1rem;">Key Initiatives</h2>
                 <div class="highlight-container">
                     <div class="highlight">
-                        <span class="highlight-icon">ðŸŒ</span>
                         <h3>Global Agri-PLAY with BUAN</h3>
-                        <p>A collaborative project with Botswana University of Agriculture and Natural Resources (BUAN) that blends agricultural science with mathematical modeling through game-based learning approaches.</p>
-                        <p>Students engage with real-world agricultural challenges using mathematical tools, developing sustainable solutions that address local farming challenges.</p>
+                        <p>A collaborative project with Botswana University of Agriculture and Natural Resources (BUAN) that blends agricultural science with mathematical modeling through game-based learning.</p>
+                        <!-- Agri-PLAY Slideshow -->
+                        <div class="slideshow-container">
+                            <div class="slideshow-slide active">
+                                <img src="assets/images/agri/Image (1).jpg" alt="Agricultural Mathematics Workshop" class="slideshow-image">
+                                <div class="slide-caption">Students applying mathematical models to crop yield analysis</div>
+                            </div>
+                            <div class="slideshow-slide">
+                                <img src="assets/images/agri/Image (3).jpg" alt="Field Work Session" class="slideshow-image">
+                                <div class="slide-caption">Field work session integrating data collection with mathematical analysis</div>
+                            </div>
+                            <div class="slideshow-slide">
+                                <img src="assets/images/agri/Image (4).jpg" alt="Sustainable Farming Solutions" class="slideshow-image">
+                                <div class="slide-caption">Designing sustainable farming solutions through mathematical modeling</div>
+                            </div>
+                            <div class="slideshow-slide">
+                                <img src="assets/images/agri/Image (5).jpg" alt="Collaborative Problem Solving" class="slideshow-image">
+                                <div class="slide-caption">Collaborative problem-solving session with BUAN students and faculty</div>
+                            </div>
+                            <div class="slideshow-slide">
+                                <img src="assets/images/agri/Image (6).jpg" alt="Game-Based Learning Activity" class="slideshow-image">
+                                <div class="slide-caption">Game-based learning activity focused on crop rotation mathematics</div>
+                            </div>
+                            
+                            <!-- Slideshow Navigation -->
+                            <div class="slideshow-nav">
+                                <button class="slideshow-btn prev-btn" aria-label="Previous slide">❮</button>
+                                <button class="slideshow-btn next-btn" aria-label="Next slide">❯</button>
+                            </div>
+                            
+                            <!-- Slideshow Indicators -->
+                            <div class="slideshow-indicators">
+                                <span class="indicator active" data-slide="0" aria-label="Go to slide 1"></span>
+                                <span class="indicator" data-slide="1" aria-label="Go to slide 2"></span>
+                                <span class="indicator" data-slide="2" aria-label="Go to slide 3"></span>
+                                <span class="indicator" data-slide="3" aria-label="Go to slide 4"></span>
+                                <span class="indicator" data-slide="4" aria-label="Go to slide 5"></span>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="highlight">
@@ -58,10 +94,11 @@
                         <h3>Fraction Action & Superpower Learning</h3>
                         <p>Fractions become superpowers in this high-energy learning initiative. Students develop mathematical fluency while engaging in gamified challenges that make abstract concepts tangible and fun.</p>
                         <p>This initiative transforms the traditionally challenging topic of fractions into an exciting adventure through storytelling and character-based learning.</p>
+                        <a href="fraction-action.html" class="btn">Explore Fraction Action</a>
                     </div>
                     
                     <div class="highlight">
-                        <span class="highlight-icon">ðŸ§©</span>
+                        <span class="highlight-icon">🧩</span>
                         <h3>Playground Science & Maths in Motion</h3>
                         <p>Transforming ordinary playgrounds into living mathematics laboratories where children discover physical principles through play.</p>
                         <p>This initiative connects kinesthetic learning with mathematical concepts, helping students experience abstract ideas through physical movement and play.</p>
@@ -70,14 +107,21 @@
                 
                 <div class="highlight-container">
                     <div class="highlight">
-                        <span class="highlight-icon">ðŸŽ®</span>
+                        <span class="highlight-icon">🎮</span>
                         <h3>ATU Metaverse Minecraft Project</h3>
                         <p>Utilizing the popular Minecraft platform to create immersive mathematical learning environments where students solve problems in virtual spaces.</p>
                         <p>This project bridges digital literacy with mathematical problem-solving, creating engaging learning experiences that resonate with digital natives.</p>
+                        <div class="video-container">
+                            <iframe 
+                                src="https://www.youtube-nocookie.com/embed/E7TGcpW3TBc" 
+                                title="ATU Metaverse Minecraft Project Video"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
                     </div>
                     
-                    <div class="highlight">
-                        <span class="highlight-icon">ðŸ’»</span>
+                        <span class="highlight-icon">💻</span>
                         <h3>Code Meets Context: STEM Labs</h3>
                         <p>A series of coding-based workshops that integrate mathematical principles with computer science, inspired by natural patterns and real-world applications.</p>
                         <p>These workshops provide free resources like code notebooks inspired by natural patterns and Leaving Cert Computer Science materials.</p>
@@ -102,7 +146,7 @@
                     
                     <div class="partnership-map">
                         <div class="partner-country" tabindex="0" aria-label="Partnership details for Ukraine">
-                            <span class="country-flag" aria-hidden="true">ðŸ‡ºðŸ‡¦</span>
+                            <span class="country-flag" aria-hidden="true">🇺🇦</span>
                             <span class="country-name">Ukraine</span>
                             <span class="country-focus">Mathematical education in conflict-affected areas</span>
                             <div class="partnership-description">
@@ -112,7 +156,7 @@
                             </div>
                         </div>
                         <div class="partner-country" tabindex="0" aria-label="Partnership details for Botswana">
-                            <span class="country-flag" aria-hidden="true">ðŸ‡§ðŸ‡¼</span>
+                            <span class="country-flag" aria-hidden="true">🇧🇼</span>
                             <span class="country-name">Botswana</span>
                             <span class="country-focus">Agricultural mathematics education</span>
                             <div class="partnership-description">
@@ -122,7 +166,7 @@
                             </div>
                         </div>
                         <div class="partner-country" tabindex="0" aria-label="Partnership details for Malaysia">
-                            <span class="country-flag" aria-hidden="true">ðŸ‡²ðŸ‡¾</span>
+                            <span class="country-flag" aria-hidden="true">🇲🇾</span>
                             <span class="country-name">Malaysia</span>
                             <span class="country-focus">Computational thinking integration</span>
                             <div class="partnership-description">
@@ -132,7 +176,7 @@
                             </div>
                         </div>
                         <div class="partner-country" tabindex="0" aria-label="Partnership details for Nigeria">
-                            <span class="country-flag" aria-hidden="true">ðŸ‡³ðŸ‡¬</span>
+                            <span class="country-flag" aria-hidden="true">🇳🇬</span>
                             <span class="country-name">Nigeria</span>
                             <span class="country-focus">Game-based learning for large classrooms</span>
                             <div class="partnership-description">
@@ -142,7 +186,7 @@
                             </div>
                         </div>
                         <div class="partner-country" tabindex="0" aria-label="Partnership details for Ireland">
-                            <span class="country-flag" aria-hidden="true">ðŸ‡®ðŸ‡ª</span>
+                            <span class="country-flag" aria-hidden="true">🇮🇪</span>
                             <span class="country-name">Ireland</span>
                             <span class="country-focus">Cross-cultural education partnerships</span>
                             <div class="partnership-description">
@@ -180,15 +224,15 @@
                 
                 <div class="testimonial">
                     <blockquote>
-                        "The Play2Learn approach has transformed how our students engage with mathematics. Abstract concepts that once caused anxiety are now approached with curiosity and excitement. The game-based learning methodology has been particularly effective in our diverse classrooms."
-                        <footer>â€” Dr. Chinedu Okonkwo, Educational Director, Lagos STEM Academy</footer>
+                        <p>"The Play2Learn methodology has transformed how our students engage with mathematics. The gamified approach makes complex concepts accessible and enjoyable, resulting in significant improvements in both test scores and classroom participation."</p>
+                        <footer>— Dr. Chinedu Okonkwo, Educational Director, Lagos STEM Academy</footer>
                     </blockquote>
                 </div>
                 
                 <div class="testimonial">
                     <blockquote>
-                        "Working with the Global Play2Learn Academy has opened new possibilities for our agricultural science students. The integration of mathematical modeling through game-based learning has made complex concepts accessible and relevant to our local farming challenges."
-                        <footer>â€” Dr. Thuto Baitseng, Botswana University of Agriculture and Natural Resources</footer>
+                        <p>"The Global Agri-PLAY initiative has been instrumental in helping our students connect mathematical concepts with agricultural practices. This approach bridges theoretical knowledge with practical applications in ways that resonate deeply with our local context."</p>
+                        <footer>— Dr. Thuto Baitseng, Botswana University of Agriculture and Natural Resources</footer>
                     </blockquote>
                 </div>
             </section>
@@ -241,6 +285,7 @@
                             <h4>Fraction Action Game Guide</h4>
                             <p>A complete teacher's guide to implementing the Fraction Action game in your classroom.</p>
                             <p class="notice">(Updated guide being prepared - Previous versions available upon request)</p>
+                            <a href="fraction-action.html" class="download-link">View Fraction Action Resources</a>
                             <a href="mailto:etain.kiely@atu.ie?subject=Request%20for%20Fraction%20Action%20Game%20Guide" class="download-link">Request via Email</a>
                         </div>
                     </div>
@@ -264,7 +309,7 @@
                 <a href="https://www.researchgate.net/profile/Etain-Kiely" class="social-link">ResearchGate</a>
                 <a href="https://atu.ie/etain-kiely" class="social-link">ATU Profile</a>
             </div>
-            <p class="copyright">&copy; <script>document.write(new Date().getFullYear())</script> Dr. Etain Kiely. All rights reserved.</p>
+            <p class="copyright">&copy; <script>document.write(new Date().getFullYear())</script> All rights reserved.</p>
         </div>
     </footer>
 
@@ -276,6 +321,102 @@
             
             menuToggle.addEventListener('click', function() {
                 navList.classList.toggle('nav-active');
+            });
+        });
+        
+        // Slideshow Functionality - Enhanced for continuous loop and automatic playback
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slideshow-slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            let currentSlide = 0;
+            let slideshowInterval;
+            
+            // Function to show a specific slide with enhanced transitions
+            function showSlide(n) {
+                // Reset current slide and indicator
+                slides.forEach(slide => {
+                    slide.style.opacity = '0';
+                    setTimeout(() => {
+                        slide.classList.remove('active');
+                    }, 200); // Faster fade out
+                });
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+                
+                // Set currentSlide within bounds (ensure looping)
+                currentSlide = n;
+                if (currentSlide >= slides.length) currentSlide = 0;
+                if (currentSlide < 0) currentSlide = slides.length - 1;
+                
+                // Activate current slide and indicator with smooth transition
+                setTimeout(() => {
+                    slides[currentSlide].classList.add('active');
+                    slides[currentSlide].style.opacity = '1';
+                    indicators[currentSlide].classList.add('active');
+                }, 200); // Faster transition between slides
+            }
+            
+            // Start the slideshow automatically
+            function startSlideshow() {
+                // Clear any existing interval to prevent multiple instances
+                if (slideshowInterval) clearInterval(slideshowInterval);
+                
+                // Set first slide as active immediately
+                showSlide(0);
+                
+                // Create new interval for continuous playback
+                slideshowInterval = setInterval(() => {
+                    showSlide(currentSlide + 1);
+                }, 2500); // Much faster slideshow timing
+            }
+            
+            // Event listeners for navigation buttons - maintain continuous loop
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => {
+                    showSlide(currentSlide - 1);
+                    
+                    // Restart the interval to avoid timing conflicts
+                    if (slideshowInterval) clearInterval(slideshowInterval);
+                    slideshowInterval = setInterval(() => {
+                        showSlide(currentSlide + 1);
+                    }, 2500);
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    showSlide(currentSlide + 1);
+                    
+                    // Restart the interval to avoid timing conflicts
+                    if (slideshowInterval) clearInterval(slideshowInterval);
+                    slideshowInterval = setInterval(() => {
+                        showSlide(currentSlide + 1);
+                    }, 2500);
+                });
+            }
+            
+            // Event listeners for indicators - maintain continuous loop
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    showSlide(index);
+                    
+                    // Restart the interval to avoid timing conflicts
+                    if (slideshowInterval) clearInterval(slideshowInterval);
+                    slideshowInterval = setInterval(() => {
+                        showSlide(currentSlide + 1);
+                    }, 2500);
+                });
+            });
+            
+            // Initialize slideshow immediately on page load
+            startSlideshow();
+            
+            // Handle page visibility changes to ensure slideshow continues after tab focus
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    startSlideshow();
+                } else {
+                    if (slideshowInterval) clearInterval(slideshowInterval);
+                }
             });
         });
     </script>

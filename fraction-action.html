@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ChecklistFraction Action & Superpower Learning - Turning fractions into superpowers through interactive, gamified learning experiences">
-    <title>Dr. Etain Kiely | ChecklistFraction Action & Superpower Learning</title>
+    <meta name="description" content="Fraction Action & Superpower Learning - Turning fractions into superpowers through interactive, gamified learning experiences">
+    <title>Fraction Action & Superpower Learning</title>
     <link rel="stylesheet" href="assets/css/main.css">
     <!-- Add favicon here once available -->
     <!-- <link rel="icon" href="assets/images/favicon.ico"> -->
@@ -342,7 +342,6 @@
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
         }
-        
         .milestone-grid {
             display: grid;
             grid-template-columns: auto 1fr;
@@ -467,16 +466,17 @@
 <body>
     <header>
         <div class="container header-content">
-            <h1 class="site-title"><a href="index.html">Dr. Etain Kiely</a></h1>
+            <a href="index.html" class="logo-title-wrapper">
+                <img src="assets/images/logo.jpg" alt="Site Logo" class="site-logo">
+            </a>
             <button class="menu-toggle" id="menuToggle">☰</button>
             <nav>
                 <ul class="nav-list" id="navList">
                     <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="research.html" class="nav-link">Research</a></li>
                     <li class="nav-item"><a href="teaching.html" class="nav-link">Teaching</a></li>
-                    <li class="nav-item"><a href="play2learn.html" class="nav-link">Play2Learn</a></li>
                     <li class="nav-item"><a href="engaged-research.html" class="nav-link">Engaged Research</a></li>
+                    <li class="nav-item"><a href="play2learn.html" class="nav-link active">Play2Learn</a></li>
                 </ul>
             </nav>
         </div>
@@ -487,7 +487,7 @@
             <!-- Hero Section -->
             <section class="hero">
                 <div class="content-bg">
-                    <h2>ChecklistFraction Action & Superpower Learning</h2>
+                    <h2>Fraction Action & Superpower Learning</h2>
                     <p class="text-gold">"Turning Fractions into Superpowers—One Heroic Mission at a Time!"</p>
                     <p>An innovative, gamified learning framework that transforms the challenge of mastering fractions into an exciting superhero adventure. Through interactive games, mission-based checklists, and character-driven quests, students engage deeply with mathematical concepts, making abstract ideas tangible, memorable, and fun.</p>
                     <div class="hero-buttons">
@@ -500,7 +500,7 @@
             <!-- Overview Section -->
             <section id="overview">
                 <h2 class="section-title">Program Overview</h2>
-                <p>ChecklistFraction Action & Superpower Learning is designed to transform abstract fraction concepts into engaging superhero-themed adventures. Students progress through missions, earn badges, and develop mathematical "superpowers" as they master essential fraction skills.</p>
+                <p>Fraction Action & Superpower Learning is designed to transform abstract fraction concepts into engaging superhero-themed adventures. Students progress through missions, earn badges, and develop mathematical "superpowers" as they master essential fraction skills.</p>
                 
                 <div class="milestone-container">
                     <h3>What We've Achieved So Far</h3>
@@ -643,12 +643,12 @@
                     </div>
                 </div>
 
-                <!-- Badge Collection -->
-                <h3>Achievement Badges</h3>
-                <div class="badge-collection">
-                    <div class="hero-badge">
-                        <span class="badge-icon">🎯</span>
-                        <span class="badge-name">Fraction Scout</span>
+                    <h3>Contact Us</h3>
+                    <p>Interested in bringing Fraction Action to your school or organization? Contact our team at mathematics@atu.ie to discuss implementation options.</p>
+                    <div class="resource-actions">
+                        <a href="mailto:mathematics@atu.ie?subject=Fraction%20Action%20Inquiry" class="btn">Email for Details</a>
+                        <a href="play2learn.html" class="btn">Back to Play2Learn</a>
+                    </div>
                     </div>
                     <div class="hero-badge">
                         <span class="badge-icon">➕</span>
@@ -698,4 +698,32 @@
                         </div>
                     </div>
                 </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/school/atlantictu/" class="social-link">LinkedIn</a>
+                <a href="https://www.researchgate.net/institution/Atlantic-Technological-University" class="social-link">ResearchGate</a>
+                <a href="https://atu.ie/research/mathematics-innovation" class="social-link">ATU Research</a>
+            </div>
+            <p class="copyright">&copy; <script>document.write(new Date().getFullYear())</script> All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for mobile menu toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navList = document.getElementById('navList');
+            
+            menuToggle.addEventListener('click', function() {
+                navList.classList.toggle('nav-active');
+            });
+        });
+    </script>
+</body>
+</html>
 

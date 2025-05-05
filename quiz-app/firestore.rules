@@ -1,0 +1,148 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions for validation and authorization
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+    
+    function isAdmin() {
+      return isSignedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+    }
+    
+    function hasRequiredFields(requiredFields) {
+      return request.resource.data.keys().hasAll(requiredFields);
+    }
+    
+    function notUpdating(fields) {
+      return !(request.resource.data.diff(resource.data).affectedKeys().hasAny(fields));
+    }
+    
+    function isValidTimestamp(field) {
+      return request.resource.data[field] is timestamp;
+    }
+    
+    function isValidScore(score, totalPossible) {
+      return score is number && totalPossible is number && score >= 0 && score <= totalPossible;
+    }
+    
+    function isValidAgeGroup(ageGroup) {
+      return ageGroup in ['young', 'mid', 'elder', 'ultimate'];
+    }
+    
+    function isValidDifficulty(difficulty) {
+      return difficulty in ['easy', 'medium', 'hard'];
+    }
+
+    // Users collection
+    match /users/{userId} {
+      allow read: if isAdmin() || isOwner(userId);
+      allow create: if isSignedIn() && request.auth.uid == userId;
+      allow update: if isOwner(userId) || isAdmin();
+      allow delete: if isAdmin();
+      
+      // Validate user profile structure
+      allow create: if hasRequiredFields(['displayName', 'email']) &&
+        request.resource.data.totalPoints is number &&
+        request.resource.data.totalPoints >= 0;
+        
+      // Prevent malicious updates to scores and badges
+      allow update: if isAdmin() || (
+        isOwner(userId) &&
+        (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['totalPoints', 'badges']) || isAdmin())
+      );
+    }
+
+    // Questions collection
+    match /questions/{questionId} {
+      allow read: if true;
+      allow write: if isAdmin();
+      
+      // Validate question structure
+      allow create, update: if hasRequiredFields(['question', 'answers', 'correctAnswer', 'ageGroup', 'difficulty']) &&
+        isValidAgeGroup(request.resource.data.ageGroup) &&
+        isValidDifficulty(request.resource.data.difficulty) &&
+        request.resource.data.answers is list;
+    }
+    
+    // Themes collection
+    match /themes/{themeId} {
+      allow read: if true;
+      allow write: if isAdmin();
+      
+      // Validate theme structure
+      allow create, update: if hasRequiredFields(['title', 'description', 'startDate', 'endDate']) &&
+        isValidTimestamp('startDate') &&
+        isValidTimestamp('endDate') &&
+        request.resource.data.startDate < request.resource.data.endDate;
+    }
+    
+    // User Badges collection
+    match /userBadges/{badgeId} {
+      // Public read access to user badges
+      allow read: if true;
+      
+      // Users can only create badges for themselves (via the server)
+      allow create: if isSignedIn() && 
+        request.resource.data.userId == request.auth.uid &&
+        hasRequiredFields(['userId', 'badgeId']) &&
+        exists(/databases/$(database)/documents/badges/$(request.resource.data.badgeId));
+      
+      // Only progress can be updated, not award status
+      allow update: if (isSignedIn() && 
+        resource.data.userId == request.auth.uid &&
+        request.resource.data.userId == resource.data.userId &&
+        request.resource.data.badgeId == resource.data.badgeId &&
+        notUpdating(['dateEarned'])) ||
+        isAdmin();
+        
+      // Badges cannot be deleted
+      allow delete: if false;
+    }
+    
+    // Leaderboard collection
+    match /leaderboard/{entryId} {
+      // Public read access to leaderboard entries
+      allow read: if true;
+      
+      // Only authorized users can create entries, and only for themselves
+      allow create: if isSignedIn() && 
+        request.resource.data.userId == request.auth.uid &&
+        hasRequiredFields(['userId', 'displayName', 'ageGroup', 'score', 'dateCompleted']) &&
+        isValidScore(request.resource.data.score, 1000) && // Assuming max score is 1000
+        isValidAgeGroup(request.resource.data.ageGroup) &&
+        isValidTimestamp('dateCompleted');
+      
+      // Entries cannot be updated or deleted by users, only admins
+      allow update, delete: if isAdmin();
+    }
+    
+    // Schools collection
+    match /schools/{schoolCode} {
+      allow read: if true;
+      
+      // Create/update school data if authenticated
+      allow create: if isSignedIn() &&
+        hasRequiredFields(['name', 'code', 'memberCount', 'totalPoints']) &&
+        request.resource.data.memberCount is number &&
+        request.resource.data.totalPoints is number &&
+        request.resource.data.memberCount >= 0 &&
+        request.resource.data.totalPoints >= 0;
+        
+      // Updates should only modify allowed fields
+      allow update: if (isSignedIn() &&
+        request.resource.data.name == resource.data.name &&
+        request.resource.data.code == resource.data.code &&
+        request.resource.data.memberCount is number &&
+        request.resource.data.totalPoints is number &&
+        request.resource.data.memberCount >= 0 &&
+        request.resource.data.totalPoints >= 0) || 
+        isAdmin();
+    }
+  }
+}
+

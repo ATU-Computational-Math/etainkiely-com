@@ -3,21 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Dr. Etain Kiely - Lecturer in Mathematics at ATU Galway. Expert in Mentoring, Learning Analytics, AI-Driven Pedagogy, and Mathematics Education.">
-    <title>Dr. Etain Kiely | Mathematics & Learning Innovation</title>
+    <meta name="description" content="Dr. Etain Kiely - Lecturer at ATU Galway. Expert in Mentoring, Learning Analytics, AI-Driven Pedagogy, and Mathematics Education.">
+    <title>Home</title>
     <link rel="stylesheet" href="assets/css/main.css">
     <!-- Add favicon here once available -->
     <!-- <link rel="icon" href="assets/images/favicon.ico"> -->
+    <style>
+        /* Hero section with header image */
+        .hero {
+            position: relative;
+            margin: 1rem 0 2.5rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 3rem; /* Increase gap between text and image */
+            padding: 2.5rem;
+            background: var(--deep-green);
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .hero-content {
+            flex: 0 1 60%; /* Give more space to content */
+            max-width: 60%;
+            color: var(--text-light);
+        }
+        
+        .hero-container {
+            flex: 0 1 35%; /* Reduce image width */
+            max-width: 35%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-image {
+            width: 100%;
+            height: auto;
+            max-height: 250px; /* Reduce max height */
+            object-fit: contain;
+            border-radius: 6px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+            opacity: 0.8;
+            animation: bounce 2s infinite;
+        }
+        
+        .scroll-indicator-text {
+            margin-bottom: 0.25rem;
+        }
+        
+        .scroll-arrow {
+            font-size: 1.5rem;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 1.5rem;
+            }
+            
+            .hero-content,
+            .hero-container {
+                max-width: 100%;
+                flex: 1 0 auto;
+                text-align: center;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-image {
+                max-height: 200px;
+            }
+            
+            .hero-buttons {
+                justify-content: center;
+            }
+        }
+        
+        /* Content-bg styles removed as hero now has the background */
+        .content-bg {
+            padding: 0;
+            margin: 0;
+            background: none;
+            box-shadow: none;
+        }
+
+        .hero-buttons {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-start;
+        }
+        
+        /* Profile picture styling */
+        .about-container {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile-image-container {
+            flex-shrink: 0;
+            width: 220px;
+            max-width: 30%;
+        }
+        
+        .profile-image {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: 3px solid var(--accent-gold);
+        }
+        
+        .about-content {
+            flex-grow: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .about-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .profile-image-container {
+                width: 180px;
+                max-width: 50%;
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        /* Play2Learn button styling override */
+        .hero-buttons .btn {
+            color: var(--text-light);
+            background-color: transparent;
+            border: 2px solid var(--accent-gold);
+        }
+        
+        .hero-buttons .btn:hover, 
+        .hero-buttons .btn:focus {
+            background-color: var(--accent-gold);
+            color: var(--very-dark-green);
+            border-color: var(--accent-gold);
+        }
+        
+        /* Apply the same styling to other buttons on the page */
+        section .btn {
+            color: var(--text-light);
+            background-color: transparent;
+            border: 2px solid var(--accent-gold);
+        }
+        
+        section .btn:hover,
+        section .btn:focus {
+            background-color: var(--accent-gold);
+            color: var(--very-dark-green);
+            border-color: var(--accent-gold);
+        }
+        /* Additional spacing for sections */
+        section {
+            margin-bottom: 2.5rem;
+        }
+        
+        /* Center text alignment helper */
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Improved highlight containers */
+        .highlight-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.25rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight {
+            padding: 1.25rem;
+            background: var(--light-gold);
+            border-radius: 8px;
+            height: 100%;
+            border-left: 4px solid var(--deep-green);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight h3 {
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            color: var(--deep-green);
+        }
+        
+        .highlight ul {
+            padding-left: 1.25rem;
+            margin-bottom: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="container header-content">
-            <h1 class="site-title"><a href="index.html">Dr. Etain Kiely</a></h1>
+            <a href="index.html" class="logo-title-wrapper">
+                <img src="assets/images/logo.jpg" alt="Site Logo" class="site-logo">
+            </a>
             <button class="menu-toggle" id="menuToggle">☰</button>
             <nav>
                 <ul class="nav-list" id="navList">
                     <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
                     <li class="nav-item"><a href="research.html" class="nav-link">Research</a></li>
                     <li class="nav-item"><a href="teaching.html" class="nav-link">Teaching</a></li>
                     <li class="nav-item"><a href="engaged-research.html" class="nav-link">Engaged Research</a></li>
@@ -31,26 +258,53 @@
         <div class="container">
             <!-- Hero Section -->
             <section class="hero">
-                <div class="content-bg">
-                    <h2>Welcome to My Academic Portfolio</h2>
-                    <p class="text-gold">"In true dialogue, both sides are willing to change." — Thích Nhất Hạnh</p>
+                <div class="hero-content">
                     <p>Lecturer in Mathematics at Atlantic Technological University (ATU), Galway. Expert in Mentoring, Learning Analytics & AI-Driven Pedagogy, and Mathematics Education.</p>
                     <div class="hero-buttons">
                         <a href="research.html" class="btn">View Research</a>
-                        <a href="about.html" class="btn">Learn More</a>
+                        <a href="#introduction-section" class="btn">Learn More</a>
                     </div>
+                </div>
+                <div class="hero-container">
+                    <img src="assets/images/header.png" alt="Mathematics and Learning Innovation" class="hero-image">
                 </div>
             </section>
 
             <!-- Introduction Section -->
-            <section>
-                <h2 class="section-title">Engaged Research: Bringing Mathematics to Life</h2>
-                <p>I am an award-winning mathematics lecturer and former Head of Teaching & Learning at ATU Sligo, with over 20 years' experience in higher education. As a qualified science teacher, I specialize in inclusive, analytics-driven STEM education that empowers learners through mastery-based assessment, reflective feedback, and curiosity-led learning.</p>
-                <p>My work spans mentoring, learning analytics, and AI-enhanced pedagogy—supporting ATU's strategic goals in equity, digital transformation, and student success.</p>
-                <a href="about.html" class="btn">Read More</a>
+            <section id="introduction-section">
+                <h2 class="section-title">Introduction</h2>
+                <div class="about-container">
+                    <div class="profile-image-container">
+                        <img src="assets/images/profile.png" alt="Profile Photo" class="profile-image">
+                    </div>
+                    <div class="about-content">
+                        <p>I am an award-winning mathematics lecturer and former Head of Teaching & Learning at ATU Sligo, with over 20 years' experience in higher education. As a qualified science teacher, I specialize in inclusive, analytics-driven STEM education that empowers learners through mastery-based assessment, reflective feedback, and curiosity-led learning.</p>
+                        <p>My work bridges theory and practice, focusing on inclusive STEM education approaches and digital transformation in education—supporting ATU's strategic goals in equity, digital transformation, and student success.</p>
+                    </div>
+                </div>
             </section>
 
-            <!-- Impact Metrics Section -->
+            <!-- Education & Background Section (merged from about.html) -->
+            <section>
+                <h2 class="section-title">Education & Background</h2>
+                <ul>
+                    <li>
+                        <strong>Ph.D. in Mathematics Education</strong>
+                        <p>Atlantic Technological University, 2015</p>
+                        <p>Dissertation: "Analytics-Driven Approaches to Mathematics Pedagogy"</p>
+                    </li>
+                    <li>
+                        <strong>M.Sc. in Learning Sciences</strong>
+                        <p>University of Galway, 2008</p>
+                    </li>
+                    <li>
+                        <strong>B.Sc. in Mathematics</strong>
+                        <p>Atlantic Technological University, 2003</p>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Impact Metrics Section (moved up) -->
             <section>
                 <h2 class="section-title">Impact at a Glance</h2>
                 <div class="highlight-container">
@@ -63,7 +317,51 @@
                             <li>Student rating average: 4.48/5 (5-year mean)</li>
                         </ul>
                     </div>
+                    <div class="highlight">
+                        <h3>Research Impact</h3>
+                        <ul>
+                            <li>15+ peer-reviewed publications</li>
+                            <li>3 funded research projects (2020-2025)</li>
+                            <li>200+ citations across academic literature</li>
+                            <li>5 international research collaborations</li>
+                        </ul>
+                    </div>
                 </div>
+            </section>
+            
+            <!-- Research Section (consolidated) -->
+            <section>
+                <h2 class="section-title">Research</h2>
+                <p>My research interests center around:</p>
+                <div class="highlight-container">
+                    <div class="highlight">
+                        <h3>Learning Analytics & Educational Data Mining</h3>
+                        <p>Focus on predictive modeling with applications in early intervention systems.</p>
+                    </div>
+                    <div class="highlight">
+                        <h3>AI-Enhanced Mathematics Pedagogy</h3>
+                        <p>Exploring the intersection of artificial intelligence and pedagogical practice to address educational challenges.</p>
+                    </div>
+                    <div class="highlight">
+                        <h3>Inclusive STEM Education Approaches</h3>
+                        <p>Developing new methodologies for ensuring equitable access to STEM education.</p>
+                    </div>
+                    <div class="highlight">
+                        <h3>Digital Transformation in Education</h3>
+                        <p>Using technology to enhance educational outcomes and create more accessible learning environments.</p>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 1.5rem;">
+                    <a href="research.html" class="btn">View Research Portfolio</a>
+                </div>
+            </section>
+
+            <!-- Teaching Philosophy Section -->
+            <section>
+                <h2 class="section-title">Teaching Philosophy</h2>
+                <p>My approach to education emphasizes open communication and mutual growth. I believe that effective teaching requires understanding students' diverse needs and adapting my methods accordingly.</p>
+                <p>In my classes, I strive to create an inclusive environment where curiosity is nurtured, and mastery-based assessment provides valuable feedback for continuous improvement.</p>
+                <a href="teaching.html" class="btn">Learn About My Teaching</a>
             </section>
             
             <!-- Teaching Innovation Section -->
@@ -90,23 +388,6 @@
                     </div>
                 </div>
             </section>
-            
-            <!-- Research Highlight Section -->
-            <section>
-                <h2 class="section-title">Research Highlights</h2>
-                <div class="highlight-container">
-                    <div class="highlight">
-                        <h3>Key Research Areas</h3>
-                        <ul>
-                            <li>Learning Analytics & Educational Data Mining</li>
-                            <li>AI-Enhanced Mathematics Pedagogy</li>
-                            <li>Inclusive STEM Education Approaches</li>
-                            <li>Digital Transformation in Education</li>
-                        </ul>
-                        <a href="research.html" class="btn">View Research</a>
-                    </div>
-                </div>
-            </section>
         </div>
     </main>
 
@@ -118,7 +399,7 @@
                 <a href="#" class="social-link">Twitter</a>
                 <a href="#" class="social-link">ResearchGate</a>
             </div>
-            <p class="copyright">&copy; <script>document.write(new Date().getFullYear())</script> Dr. Etain Kiely. All rights reserved.</p>
+            <p class="copyright">&copy; <script>document.write(new Date().getFullYear())</script> All rights reserved.</p>
         </div>
     </footer>
 
